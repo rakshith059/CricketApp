@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">CricketApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="matches">Matches</string>
+    <string name="points_table">Points Table</string>
+    <string name="team_name">Team Name</string>
+    <string name="wins">Wins</string>
+    <string name="played">Played</string>
+    <string name="loss">loss</string>
+    <string name="point">Points</string>
+    <string name="nrr">NRR</string>
+    <string name="p">P</string>
+    <string name="w">W</string>
+    <string name="l">L</string>
+    <string name="pts">pts</string>
+    <string name="match_no">Match Number</string>
+    <string name="vs">v/s</string>
+    <string name="team_one">Team 1</string>
+    <string name="team_second">team 2</string>
+    <string name="batting_stats">Batting stats</string>
+    <string name="bowling_stats">Bowling stats</string>
+    <string name="valuable_player_stats">Valuable Player</string>
+    <string name="rules">rules</string>
+    <string name="batsman_name">Batsman</string>
+    <string name="balls_faced">Balls faced</string>
+    <string name="runs_scored">Runs Scored</string>
+    <string name="bowler_name">Bowler</string>
+    <string name="balls_bowled">Balls Bowled</string>
+    <string name="wickets_taken">Wickets Taken</string>
+    <string name="player_name">Name</string>
+    <string name="r">R</string>
+    <string name="c">C</string>
+    <string name="runout">R/O</string>
+
+    <string name="no_internet">Please check your internet connection and try again..</string>
+    <string name="sm_retry">Retry</string>
+    <string name="toss">Toss</string>
+    <string name="score">Score</string>
+    <string name="winner">Winner</string>
+    <string name="mom">MOM :</string>
+
+</resources>

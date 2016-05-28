@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/match_detail_match_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/match_no"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/match_detail_toss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/toss"
+        android:textColor="@color/colorPrimary"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/match_detail_team_one_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/team_one"
+            android:textAllCaps="true"
+            android:textSize="@dimen/size_18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/match_detail_team_one_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:text="@string/score"
+            android:textAllCaps="true"
+            android:textSize="@dimen/size_15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/match_detail_team_two_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/team_second"
+            android:textAllCaps="true"
+            android:textSize="@dimen/size_18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/match_detail_team_two_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:text="@string/score"
+            android:textAllCaps="true"
+            android:textSize="@dimen/size_15sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/match_detail_winner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="@string/winner"
+        android:textColor="@color/black"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_15sp" />
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_mom"/>
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:padding="5dp"-->
+            <!--android:text="@string/mom"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textSize="@dimen/size_15sp"-->
+            <!--android:textStyle="bold" />-->
+
+        <TextView
+            android:id="@+id/match_detail_mom_player"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:gravity="center"
+            android:text="@string/player_name"
+            android:textAllCaps="true"
+            android:textSize="@dimen/size_15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

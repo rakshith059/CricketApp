@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="2dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/about_us_row_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/player_name"
+        android:textAllCaps="true"
+        android:background="@color/white"
+        android:textColor="@color/black"
+        android:textSize="@dimen/size_18sp" />
+
+</LinearLayout>

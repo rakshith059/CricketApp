@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:elevation="1dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/points_table_row_tv_team_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="3dp"
+        android:text="@string/team_name"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_18sp" />
+
+    <TextView
+        android:id="@+id/points_table_row_tv_played"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:text="@string/p"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_18sp" />
+
+    <TextView
+        android:id="@+id/points_table_row_tv_wins"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:text="@string/w"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_18sp" />
+
+    <TextView
+        android:id="@+id/points_table_row_tv_loss"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:text="@string/l"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_18sp" />
+
+    <TextView
+        android:id="@+id/points_table_row_tv_points"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:text="@string/pts"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_18sp" />
+
+    <TextView
+        android:id="@+id/points_table_row_tv_nrr"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingBottom="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="3dp"
+        android:text="@string/nrr"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_18sp" />
+
+</LinearLayout>
