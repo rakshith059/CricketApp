@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CricketApp</string>
+    <string name="app_name">RX1 Cricketers</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -41,6 +41,22 @@
     <string name="toss">Toss</string>
     <string name="score">Score</string>
     <string name="winner">Winner</string>
-    <string name="mom">MOM :</string>
+    <string name="mom">MOM</string>
+    <string name="match_info">Match Info</string>
+
+    <string name="rules_for_valuable_player">BATTING \n
+\t 1 run - 1 point \n
+\t Boundary bonus - 3 points \n
+\t 15+ runs - 5 points \n\n
+BOWLING \n
+\t 1 wicket - 10 points \n
+\t 3+ wicket - 5 points \n
+\t Madien over - 5 points \n\n
+FIELDING \n
+\t 1 Caught - 10 points \n
+\t Stumping - 10 points \n
+\t Runout - 10 points \n
+\t (direct hit - 10 points , Fielder - 7 points + 3 points)</string>
+    <string name="rules_for_valuable_player_text">Rules for valuable player</string>
 
 </resources>

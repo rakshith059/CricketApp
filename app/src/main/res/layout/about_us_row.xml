@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="@string/player_name"
+        android:gravity="center_vertical"
         android:textAllCaps="true"
         android:background="@color/white"
-        android:textColor="@color/black"
-        android:textSize="@dimen/size_18sp" />
+        android:textSize="@dimen/size_15sp" />
 
 </LinearLayout>

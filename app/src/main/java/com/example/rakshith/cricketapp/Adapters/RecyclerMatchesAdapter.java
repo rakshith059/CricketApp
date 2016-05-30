@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.rakshith.cricketapp.Fragments.MatchDetailFragment;
@@ -53,16 +54,20 @@ public class RecyclerMatchesAdapter extends RecyclerView.Adapter<RecyclerMatches
 
         if(TextUtils.isEmpty(winner)){
             holder.cvCardView.setCardBackgroundColor(mActivity.getResources().getColor(R.color.white));
+            holder.ivMatchDetail.setVisibility(View.GONE);
         }
         else{
+            holder.ivMatchDetail.setVisibility(View.VISIBLE);
             holder.cvCardView.setCardBackgroundColor(mActivity.getResources().getColor(R.color.light_grey));
             holder.cvCardView.setOnClickListener(this);
             holder.cvCardView.setTag(matchesModel);
         }
         if(TextUtils.isEmpty(toss)){
+            holder.vDivider.setVisibility(View.GONE);
             holder.tvToss.setVisibility(View.GONE);
         }
         else{
+            holder.vDivider.setVisibility(View.VISIBLE);
             holder.tvToss.setVisibility(View.VISIBLE);
             holder.tvToss.setText(toss);
         }
@@ -87,6 +92,8 @@ public class RecyclerMatchesAdapter extends RecyclerView.Adapter<RecyclerMatches
         TextView tvTeamTwo;
         CardView cvCardView;
         TextView tvToss;
+        ImageView ivMatchDetail;
+        View vDivider;
 
         public MatchesHolder(View itemView) {
             super(itemView);
@@ -96,6 +103,8 @@ public class RecyclerMatchesAdapter extends RecyclerView.Adapter<RecyclerMatches
             tvTeamOne = (TextView) itemView.findViewById(R.id.matches_row_tv_team_one);
             tvTeamTwo = (TextView) itemView.findViewById(R.id.matches_row_tv_team_two);
             tvToss = (TextView) itemView.findViewById(R.id.matches_row_tv_toss);
+            ivMatchDetail = (ImageView) itemView.findViewById(R.id.matches_row_iv_detail);
+            vDivider = itemView.findViewById(R.id.matches_row_view);
         }
     }
 }
