@@ -8,8 +8,21 @@
     tools:context="com.example.rakshith.cricketapp.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        app:adSize="BANNER"
+        app:adUnitId="@string/banner_home_footer"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"/>
+
+
     <android.widget.FrameLayout
         android:id="@+id/contentMainflMainContainer"
+        android:layout_above="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+
 </RelativeLayout>

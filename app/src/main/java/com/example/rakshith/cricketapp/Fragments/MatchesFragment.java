@@ -20,6 +20,8 @@ import com.example.rakshith.cricketapp.Models.MatchesModel;
 import com.example.rakshith.cricketapp.R;
 import com.example.rakshith.cricketapp.Utils.DataBaseHelper;
 import com.example.rakshith.cricketapp.Utils.RecyclerItemDecorator;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -44,6 +46,8 @@ public class MatchesFragment extends BaseFragment {
 
     DataBaseHelper dataBaseHelper;
     ProgressBar progressBar;
+
+//    AdView mAdView;
 
     @Override
     public void onAttach(Activity activity) {
@@ -72,6 +76,8 @@ public class MatchesFragment extends BaseFragment {
         srlRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.macthes_fragment_srl_refresh_container);
         progressBar = (ProgressBar) getView().findViewById(R.id.progressBar);
 
+//        mAdView = (AdView) getView().findViewById(R.id.adView);
+
         progressBar.setVisibility(View.VISIBLE);
         linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -79,6 +85,11 @@ public class MatchesFragment extends BaseFragment {
         rvRecyclerView.setLayoutManager(linearLayoutManager);
 
         getMatchInfoIfInternetPresent();
+
+//        AdRequest adRequest = new AdRequest.Builder()
+////                .addTestDevice("847D2C1EBF23C6270BCD6AA0BE9380BC")
+//                .build();
+//        mAdView.loadAd(adRequest);
 
         srlRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -104,6 +115,30 @@ public class MatchesFragment extends BaseFragment {
             snackbar.show();
         }
     }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if (mAdView != null) {
+//            mAdView.resume();
+//        }
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        if (mAdView != null) {
+//            mAdView.pause();
+//        }
+//        super.onPause();
+//    }
+//
+//    @Override
+//    public void onDestroy() {
+//        if (mAdView != null) {
+//            mAdView.destroy();
+//        }
+//        super.onDestroy();
+//    }
 
     private void getMatchInfo() {
         matchesList.clear();
@@ -114,6 +149,8 @@ public class MatchesFragment extends BaseFragment {
                 if (e == null) {
                     progressBar.setVisibility(View.GONE);
                     srlRefreshLayout.setRefreshing(false);
+
+//                    matchesList.add(new MatchesModel());
 
                     for (ParseObject parseObject : list) {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.

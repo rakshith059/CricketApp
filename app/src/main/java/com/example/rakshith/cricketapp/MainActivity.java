@@ -17,11 +17,15 @@ import com.example.rakshith.cricketapp.Fragments.AboutUsFragment;
 import com.example.rakshith.cricketapp.Fragments.HomeFragment;
 import com.example.rakshith.cricketapp.Fragments.RulesFragment;
 import com.example.rakshith.cricketapp.Fragments.StatsFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class MainActivity extends BaseActivity
         setSupportActionBar(toolbar);
 
         mContext = MainActivity.this;
+        mAdView = (AdView) findViewById(R.id.adView);
 
         replaceFragment(new HomeFragment() , null , null);
 
@@ -49,6 +54,9 @@ public class MainActivity extends BaseActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         mContext = MainActivity.this;
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -107,8 +115,28 @@ public class MainActivity extends BaseActivity
         return true;
     }
 
+
     @Override
-    protected void onDestroy() {
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
         super.onDestroy();
     }
 }

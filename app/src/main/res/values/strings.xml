@@ -59,4 +59,7 @@ FIELDING \n
 \t (direct hit - 10 points , Fielder - 7 points + 3 points)</string>
     <string name="rules_for_valuable_player_text">Rules for valuable player</string>
 
+    <string name="banner_home_footer">ca-app-pub-5959977289534649/8672264813</string>
+    <string name="native_ad_home_screen">ca-app-pub-5959977289534649/7695059211</string>
+
 </resources>
