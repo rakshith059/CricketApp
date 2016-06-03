@@ -61,5 +61,19 @@ FIELDING \n
 
     <string name="banner_home_footer">ca-app-pub-5959977289534649/8672264813</string>
     <string name="native_ad_home_screen">ca-app-pub-5959977289534649/7695059211</string>
+    <string name="rules_text">Rules</string>
+    <string name="rules_for_game">\t 1.Entrance Fee: INR 1500/- \n
+                                  \t 2.Maximum of 10 teams will participate in the tournament. There will be 2 groups A and B. \n
+                                  \t 3.Each team in each group will be playing against remaining 4 teams in the same group. \n
+                                  \t 4.Top 2 teams from each group with highest points (highest NRR if same points) will qualify to the playoffs. \n
+                                  \t 5.Top 2 teams with highest points (highest NRR if same points) will play qualifier 1, winner will play finals and loser will play in eliminator 2 (see step 6).\n
+                                  \t 6.Bottom 2 teams will play in eliminator 1, winners will play eliminator 1 (see step 5). \n
+                                  \t 7.Each team participating in the tournament should be in their respective jerseys. \n
+                                  \t 8.Each match will be a 6 over game. \n
+                                  \t 9.Man of the match will be awarded for each match. \n
+                                  \t 10.Umpires decision will be final and foremost. \n
+                                  \t 11.There might be changes in the game format according to the situation. \n
+                                  \t 12.There is no chance for players, to play in more than one team.
+    </string>
 
 </resources>

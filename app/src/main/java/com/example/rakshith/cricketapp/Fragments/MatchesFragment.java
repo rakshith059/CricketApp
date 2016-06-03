@@ -150,7 +150,7 @@ public class MatchesFragment extends BaseFragment {
                     progressBar.setVisibility(View.GONE);
                     srlRefreshLayout.setRefreshing(false);
 
-//                    matchesList.add(new MatchesModel());
+                    matchesList.add(new MatchesModel());
 
                     for (ParseObject parseObject : list) {
                         // use dealsObject.get('columnName') to access the properties of the Deals object.

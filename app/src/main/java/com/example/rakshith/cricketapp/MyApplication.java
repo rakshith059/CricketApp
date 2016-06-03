@@ -2,6 +2,7 @@ package com.example.rakshith.cricketapp;
 
 import android.app.Application;
 
+import com.onesignal.OneSignal;
 import com.parse.Parse;
 
 /**
@@ -24,5 +25,7 @@ public class MyApplication extends Application{
 
         Parse.enableLocalDatastore(getApplicationContext());
         Parse.initialize(getApplicationContext(), "WAuMBKwcjZU6eHZaQMRxVxhLpvkDXHWCP6ODYqMo", "fz1veB4LuwRD65XfND0P6jIVYNsSULbW2XhhEBMw");
+
+        OneSignal.startInit(this).init();
     }
 }

@@ -10,6 +10,11 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+
+        manifestPlaceholders = [manifestApplicationId: "${applicationId}",
+                                onesignal_app_id: "0dc25f91-c71f-4216-bad6-e8f3b5dd605e",
+                                onesignal_google_project_number: "1029066370657"]
     }
     buildTypes {
         release {
@@ -17,6 +22,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        release {
+            storeFile file("$project.rootDir/RX1_cricketers.keystore")
+            storePassword "4jn12is036"
+            keyAlias "Cricket_app"
+            keyPassword "4jn12is036"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), "$project.rootDir/proguard-rules.txt"
+        }
+
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+
 }
 
 dependencies {
@@ -28,5 +57,9 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.1.0'
     compile files('libs/Parse-1.13.0.jar')
     compile files('libs/bolts-tasks-1.4.0.jar')
-    compile 'com.google.android.gms:play-services-ads:8.4.0'
+    compile 'com.google.android.gms:play-services-ads:9.0.0'
+    compile 'com.onesignal:OneSignal:2.+@aar'
+    compile 'com.google.android.gms:play-services-gcm:+'
+    compile 'com.google.android.gms:play-services-analytics:+'
+    compile "com.google.android.gms:play-services-location:+"
 }
