@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/size_28dp"
+    android:layout_marginTop="@dimen/size_5dp"
+    android:background="@color/cardview_light_background"
+    android:orientation="vertical"
+    app:layout_collapseParallaxMultiplier="1.0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/matches_poll_item_ll_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/purple"
+                android:minHeight="@dimen/size_90dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/matches_poll_item_ll_poll_teams"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/matches_poll_item_ll_background"
+                android:layout_marginTop="-48dp"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/matches_poll_item_rv_poll_teams"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_28dp"
+                android:layout_alignTop="@+id/matches_poll_item_ll_view_more"
+                android:layout_marginLeft="@dimen/size_20dp"
+                android:layout_marginRight="@dimen/size_20dp"
+                android:src="@drawable/matches_bottom_background" />
+
+            <LinearLayout
+                android:id="@+id/matches_poll_item_ll_view_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/matches_poll_item_ll_poll_teams"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/size_20dp"
+                android:background="@color/cardview_light_background"
+                android:gravity="center|center_horizontal"
+                android:padding="@dimen/size_6dp">
+
+                <TextView
+                    android:id="@+id/matches_poll_item_tv_view_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@color/purple"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/view_more"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/matches_poll_item_tv_poll_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/size_5dp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -11,12 +11,22 @@
             android:icon="@drawable/ic_rules"
             android:title="Rules" />
         <item
-            android:id="@+id/nav_stats"
-            android:icon="@drawable/ic_stats"
-            android:title="Stats" />
-        <item
             android:id="@+id/nav_about_us"
             android:icon="@drawable/ic_about_us"
             android:title="About us" />
+        <item
+            android:id="@+id/nav_location"
+            android:icon="@drawable/ic_location"
+            android:title="Location" />
     </group>
+
+    <group
+        android:id="@+id/menu_bottom"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_developed_by1"
+            android:icon="@drawable/ic_developer"
+            android:title="Rakshith(rakshi059@gmail.com)" />
+    </group>
+
 </menu>

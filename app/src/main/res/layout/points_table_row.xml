@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@color/semi_transparent"
     android:elevation="1dp"
     android:orientation="horizontal">
 
@@ -26,7 +26,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="3dp"
-        android:text="@string/p"
+        android:text="@string/played"
         android:textAllCaps="true"
         android:textSize="@dimen/size_18sp" />
 
@@ -40,7 +40,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="3dp"
-        android:text="@string/w"
+        android:text="@string/wins"
         android:textAllCaps="true"
         android:textSize="@dimen/size_18sp" />
 
@@ -54,7 +54,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="3dp"
-        android:text="@string/l"
+        android:text="@string/losses"
         android:textAllCaps="true"
         android:textSize="@dimen/size_18sp" />
 
@@ -69,20 +69,6 @@
         android:paddingRight="10dp"
         android:paddingTop="3dp"
         android:text="@string/pts"
-        android:textAllCaps="true"
-        android:textSize="@dimen/size_18sp" />
-
-    <TextView
-        android:id="@+id/points_table_row_tv_nrr"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:maxLines="1"
-        android:paddingBottom="3dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="3dp"
-        android:text="@string/nrr"
         android:textAllCaps="true"
         android:textSize="@dimen/size_18sp" />
 

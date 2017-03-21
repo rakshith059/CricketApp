@@ -7,4 +7,7 @@
     <color name="light_grey">#eeeeee</color>
     <color name="medium_grey">#dddddd</color>
     <color name="black">#000000</color>
+
+    <color name="semi_transparent">#99000000</color>
+    <color name="purple">#744eaa</color>
 </resources>

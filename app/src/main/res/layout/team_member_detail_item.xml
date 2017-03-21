@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/team_member_detail_item_ll_main_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/size_5dp">
+
+    <TextView
+        android:id="@+id/team_member_detail_item_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/team_name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/size_20sp"
+        android:textStyle="italic" />
+
+    <ImageView
+        android:id="@+id/team_member_detail_item_iv_role"
+        android:layout_width="@dimen/size_50dp"
+        android:layout_height="@dimen/size_50dp"
+        android:src="@drawable/ic_rx1_logo" />
+
+</LinearLayout>
