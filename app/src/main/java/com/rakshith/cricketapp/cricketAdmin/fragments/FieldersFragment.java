@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
+import com.rakshith.cricketapp.cricketAdmin.Utils.RecyclerItemDecorator;
 import com.rakshith.cricketapp.cricketAdmin.adapters.PlayerStatsAdapter;
 import com.rakshith.cricketapp.cricketAdmin.models.MemberStats;
 
@@ -66,6 +67,7 @@ public class FieldersFragment extends BaseFragment implements View.OnClickListen
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvPlayerStats.addItemDecoration(new RecyclerItemDecorator(2));
         rvPlayerStats.setLayoutManager(linearLayoutManager);
 
         tvBallsOverCatches.setText(getResources().getString(R.string.catches));

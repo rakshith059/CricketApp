@@ -6,7 +6,7 @@
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_grey"
+        android:background="@color/transparent_blue"
         android:orientation="vertical">
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -25,6 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:backgroundTint="@color/purple"
             android:elevation="3dp">
 
             <LinearLayout
@@ -36,6 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/rules_for_game"
+                    android:textColor="@color/white"
                     android:textStyle="italic" />
 
             </LinearLayout>
@@ -58,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:backgroundTint="@color/purple"
             android:elevation="3dp">
 
             <LinearLayout
@@ -68,6 +71,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
                     android:text="@string/rules_for_valuable_player"
                     android:textStyle="italic" />
 

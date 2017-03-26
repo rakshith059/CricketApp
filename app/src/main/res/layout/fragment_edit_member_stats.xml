@@ -6,7 +6,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/semi_transparent"
+        android:background="@color/transparent_blue"
         android:orientation="vertical">
 
         <TextView
@@ -55,7 +55,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_matches_played"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -93,7 +94,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_balls_faced"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -131,7 +133,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_runs_scored"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -169,7 +172,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_fours"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -207,7 +211,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_overs_bowled"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -245,7 +250,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_wickets_took"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -283,7 +289,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_maidens"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -321,7 +328,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_catches"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -359,7 +367,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_run_outs"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -397,7 +406,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_stumps"
                     android:inputType="numberDecimal"
-                    android:text="0" />
+                    android:text="0"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>

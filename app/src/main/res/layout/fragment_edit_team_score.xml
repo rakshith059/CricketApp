@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_dark_background"
+        android:background="@color/transparent_blue"
         android:orientation="vertical">
 
         <LinearLayout
@@ -38,44 +38,97 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_matches_played"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/fragment_edit_team_score_til_wins"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/result"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_20sp"
+                    android:textStyle="bold" />
+
+                <RadioGroup
+                    android:id="@+id/fragment_edit_team_score_rg_win_lost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-                    <EditText
-                        android:id="@+id/fragment_edit_team_score_et_wins"
+                    <RadioButton
+                        android:id="@+id/fragment_edit_team_score_rb_win"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_matches_wins"
-                        android:inputType="numberDecimal" />
+                        android:layout_weight="1"
+                        android:padding="@dimen/size_10dp"
+                        android:text="@string/win"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white" />
 
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/fragment_edit_team_score_til_losses"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <EditText
-                        android:id="@+id/fragment_edit_team_score_et_losses"
+                    <RadioButton
+                        android:id="@+id/fragment_edit_team_score_rb_lost"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_matches_lost"
-                        android:inputType="numberDecimal" />
+                        android:layout_weight="1"
+                        android:padding="@dimen/size_10dp"
+                        android:text="@string/lost"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white" />
 
-                </android.support.design.widget.TextInputLayout>
+                    <RadioButton
+                        android:id="@+id/fragment_edit_team_score_rb_draw"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="@dimen/size_10dp"
+                        android:text="@string/draw"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white" />
+
+                </RadioGroup>
+
+                <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:id="@+id/fragment_edit_team_score_til_wins"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1">-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/fragment_edit_team_score_et_wins"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="@string/hint_matches_wins"-->
+                <!--android:inputType="numberDecimal"-->
+                <!--android:textColor="@color/white" />-->
+
+                <!--</android.support.design.widget.TextInputLayout>-->
+
+                <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:id="@+id/fragment_edit_team_score_til_losses"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1">-->
+
+                <!--<EditText-->
+                <!--android:id="@+id/fragment_edit_team_score_et_losses"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="@string/hint_matches_lost"-->
+                <!--android:inputType="numberDecimal"-->
+                <!--android:textColor="@color/white" />-->
+
+                <!--</android.support.design.widget.TextInputLayout>-->
             </LinearLayout>
 
             <LinearLayout
@@ -90,13 +143,15 @@
                     android:gravity="center_vertical"
                     android:padding="@dimen/size_5dp"
                     android:text="0"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/size_20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="@string/plus" />
+                    android:text="@string/plus"
+                    android:textColor="@color/white" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/fragment_edit_team_score_til_runs_for"
@@ -109,7 +164,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_runs_for"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/white" />
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
@@ -119,13 +175,15 @@
                     android:gravity="center_vertical"
                     android:padding="@dimen/size_5dp"
                     android:text="0"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/size_20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="@string/plus" />
+                    android:text="@string/plus"
+                    android:textColor="@color/white" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/fragment_edit_team_score_til_wickets_lost"
@@ -138,7 +196,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_wickets_lost"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/white" />
 
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
@@ -155,13 +214,15 @@
                     android:gravity="center_vertical"
                     android:padding="@dimen/size_5dp"
                     android:text="0"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/size_20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="@string/plus" />
+                    android:text="@string/plus"
+                    android:textColor="@color/white" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/fragment_edit_team_score_til_runs_against"
@@ -174,7 +235,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_runs_against"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/white" />
                 </android.support.design.widget.TextInputLayout>
 
                 <TextView
@@ -184,13 +246,15 @@
                     android:gravity="center_vertical"
                     android:padding="@dimen/size_5dp"
                     android:text="0"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/size_20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="@string/plus" />
+                    android:text="@string/plus"
+                    android:textColor="@color/white" />
 
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/fragment_edit_team_score_til_wickets_took"
@@ -203,7 +267,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/hint_wickets_took"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/white" />
 
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
@@ -220,27 +285,40 @@
                     android:gravity="center_vertical"
                     android:padding="@dimen/size_5dp"
                     android:text="0"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/size_20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="@string/plus" />
+                    android:text="@string/plus"
+                    android:textColor="@color/white" />
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/fragment_edit_team_score_til_points"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/fragment_edit_team_score_tv_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/size_5dp"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_20sp" />
 
-                    <EditText
-                        android:id="@+id/fragment_edit_team_score_et_points"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/hint_total_points"
-                        android:inputType="numberDecimal" />
+                <!--<android.support.design.widget.TextInputLayout-->
+                <!--android:id="@+id/fragment_edit_team_score_til_points"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
 
-                </android.support.design.widget.TextInputLayout>
+                <!--<EditText-->
+                <!--android:id="@+id/fragment_edit_team_score_et_points"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:hint="@string/hint_total_points"-->
+                <!--android:inputType="numberDecimal"-->
+                <!--android:textColor="@color/white" />-->
+
+                <!--</android.support.design.widget.TextInputLayout>-->
             </LinearLayout>
 
             <TextView

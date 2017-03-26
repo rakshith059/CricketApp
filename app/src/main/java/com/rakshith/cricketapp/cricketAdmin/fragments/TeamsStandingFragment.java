@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
+import com.rakshith.cricketapp.cricketAdmin.Utils.RecyclerItemDecorator;
 import com.rakshith.cricketapp.cricketAdmin.adapters.PointsAdapter;
 import com.rakshith.cricketapp.cricketAdmin.models.TeamScore;
 
@@ -63,6 +64,7 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(mActivity);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvTeamsScores.addItemDecoration(new RecyclerItemDecorator(2));
         rvTeamsScores.setLayoutManager(layoutManager);
 
         getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_TOTAL_POINT);

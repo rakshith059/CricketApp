@@ -16,6 +16,7 @@ public class Constants {
     public static final String DB_POLL_B = "pollB";
     public static final String DB_TEAMS_SCORE = "teamsScore";
     public static final String DB_PLAYER_STATS = "playerStats";
+    public static final String DB_MATCHES = "matches";
 
     public static final String DB_TEAMS_SCORE_CHILD_TOTAL_POINT = "totalPoints";
     public static final String DB_PLAYER_STATS_CHILD_RUNS = "iRunsScored";
@@ -48,6 +49,18 @@ public class Constants {
     public static final String HASSAN = "HASSAN";
     public static final String TEAM_NAME = "team_name";
     public static final String PLAYER_NAME = "player_name";
+
+    public static final String RUN = "run";
+    public static final String WICKET = "wicket";
+    public static final String RUNS = "runs";
+    public static final String WICKETS = "wickets";
+    public static final String MATCH_NUM = "match_number";
+    public static final String TEAM_NAME_ONE = "team_name_one";
+    public static final String TEAM_NAME_TWO = "team_name_two";
+    public static final String MATCH_DETAIL = "match_detail";
+    public static final String WIN = "win";
+    public static final String LOST = "lost";
+    public static String DRAW = "draw";
 
     public void setFadeAnimation(View view) {
         AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);

@@ -10,4 +10,8 @@
 
     <color name="semi_transparent">#99000000</color>
     <color name="purple">#744eaa</color>
+    <color name="purple_1">#885ead</color>
+    <color name="purple_2">#aa8cc5</color>
+    <color name="transparent_blue">#783F51B5</color>
+    <color name="transparent_red">#bfDB7093</color>
 </resources>

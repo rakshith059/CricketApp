@@ -78,12 +78,12 @@ public class TeamsPollAdapter extends RecyclerView.Adapter<TeamsPollAdapter.Team
     public class TeamsPollViewHolder extends RecyclerView.ViewHolder {
         RecyclerView rvPollTeams;
         TextView tvPollName;
-        LinearLayout llViewMore;
+//        LinearLayout llViewMore;
 
         public TeamsPollViewHolder(View itemView) {
             super(itemView);
 
-            llViewMore = (LinearLayout) itemView.findViewById(R.id.matches_poll_item_ll_view_more);
+//            llViewMore = (LinearLayout) itemView.findViewById(R.id.matches_poll_item_ll_view_more);
             rvPollTeams = (RecyclerView) itemView.findViewById(R.id.matches_poll_item_rv_poll_teams);
             tvPollName = (TextView) itemView.findViewById(R.id.matches_poll_item_tv_poll_name);
         }

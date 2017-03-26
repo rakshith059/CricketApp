@@ -143,6 +143,18 @@
     <string name="stumps">stump</string>
     <string name="upload">upload</string>
     <string name="title_activity_map">Map</string>
+    <string name="create_matches">Enter matches</string>
+    <string name="enter_matches">enter matches</string>
+    <string name="hint_team_score">Enter team score</string>
+    <string name="toss_win_by">Toss win by</string>
+    <string name="match_win_by">Match win by</string>
+    <string name="hint_runs_wickets">runs/wickets</string>
+    <string name="hint_mom">Enter Man Of the Match</string>
+    <string name="select_team">Select team</string>
+    <string name="result">RESULT : </string>
+    <string name="win">WON</string>
+    <string name="lost">LOST</string>
+    <string name="draw">DRAW</string>
 
 
 </resources>

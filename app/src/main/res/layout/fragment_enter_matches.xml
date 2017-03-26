@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent_blue"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_enter_matches_tv_match_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/size_10dp"
+            android:text="1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_20sp"
+            android:textStyle="bold|italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/size_10dp">
+
+            <Spinner
+                android:id="@+id/fragment_enter_matches_sp_team_one_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:prompt="@string/hint_team_name" />
+
+            <Spinner
+                android:id="@+id/fragment_enter_matches_sp_team_two_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:prompt="@string/hint_team_name" />
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/fragment_enter_matches_cv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/size_5dp"
+            android:backgroundTint="@color/colorPrimary"
+            app:cardCornerRadius="@dimen/size_10dp">
+
+            <TextView
+                android:id="@+id/fragment_enter_matches_tv_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="@dimen/size_15dp"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_16sp"
+                android:textStyle="bold" />
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

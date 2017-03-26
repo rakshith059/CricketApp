@@ -147,6 +147,8 @@ public class EditTeamMemberStatsFragment extends BaseFragment implements View.On
         super.onActivityCreated(savedInstanceState);
 
         if (!TextUtils.isEmpty(mPlayerName) && !TextUtils.isEmpty(mTeamName)) {
+            tvPlayerName.setText(mPlayerName);
+
             String playerNameTeamName = mPlayerName + "_" + mTeamName;
             databaseReference.child(Constants.DB_PLAYER_STATS).child(playerNameTeamName)
                     .addValueEventListener(new ValueEventListener() {

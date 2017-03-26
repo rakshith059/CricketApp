@@ -5,7 +5,7 @@
     android:id="@+id/content_database"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/semi_transparent"
+    android:background="@color/transparent_blue"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -69,7 +69,8 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_team_name"
                 android:inputType="textCapCharacters"
-                android:maxLength="50" />
+                android:maxLength="50"
+                android:textColor="@color/white" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -91,14 +92,16 @@
                     android:hint="@string/hint_captain_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name1" />
+                    android:text="name1"
+                    android:textColor="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
             <Spinner
                 android:id="@+id/add_members_spinner_captain_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -119,7 +122,8 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name2" />
+                    android:text="name2"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -127,7 +131,8 @@
                 android:id="@+id/add_members_spinner_player2_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -148,7 +153,8 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name3" />
+                    android:text="name3"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -156,7 +162,8 @@
                 android:id="@+id/add_members_spinner_player3_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -177,7 +184,8 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name4" />
+                    android:text="name4"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -185,7 +193,8 @@
                 android:id="@+id/add_members_spinner_player4_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -206,7 +215,8 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name5" />
+                    android:text="name5"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -214,7 +224,8 @@
                 android:id="@+id/add_members_spinner_player5_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -235,7 +246,8 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name6" />
+                    android:text="name6"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -243,7 +255,8 @@
                 android:id="@+id/add_members_spinner_player6_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -264,7 +277,8 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name7" />
+                    android:text="name7"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -272,7 +286,8 @@
                 android:id="@+id/add_members_spinner_player7_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -293,7 +308,8 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name8" />
+                    android:text="name8"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -301,7 +317,8 @@
                 android:id="@+id/add_members_spinner_player8_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -322,7 +339,8 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name9" />
+                    android:text="name9"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -330,7 +348,8 @@
                 android:id="@+id/add_members_spinner_player9_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:prompt="@string/submit" />
+                android:prompt="@string/submit"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -350,7 +369,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_city_name"
                     android:inputType="textCapCharacters"
-                    android:text="City" />
+                    android:text="City"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -374,7 +394,8 @@
                     android:hint="@string/hint_contact_number"
                     android:inputType="numberDecimal"
                     android:maxLength="10"
-                    android:text="1111111111" />
+                    android:text="1111111111"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
@@ -396,7 +417,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_email_id"
                     android:inputType="textEmailAddress"
-                    android:text="email-id" />
+                    android:text="email-id"
+                    android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
 

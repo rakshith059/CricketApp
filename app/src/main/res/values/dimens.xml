@@ -24,4 +24,8 @@
     <dimen name="size_30dp">30dp</dimen>
     <dimen name="size_15sp">15sp</dimen>
     <dimen name="size_14sp">14sp</dimen>
+    <dimen name="size_15dp">15dp</dimen>
+    <dimen name="size_150dp">150dp</dimen>
+    <dimen name="size_3dp">3dp</dimen>
+    <dimen name="size_75dp">75dp</dimen>
 </resources>

@@ -7,8 +7,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/common_recycler_view_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white" />
+        android:layout_height="wrap_content" />
 
     <ProgressBar
         android:id="@+id/common_recycler_view_pb_progress"
