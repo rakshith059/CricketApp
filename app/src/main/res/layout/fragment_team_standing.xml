@@ -6,7 +6,7 @@
     android:elevation="1dp"
     android:orientation="vertical">
 
-    <include layout="@layout/points_table_row" />
+    <include layout="@layout/player_stats_item" />
 
     <include layout="@layout/common_recycler_view" />
 

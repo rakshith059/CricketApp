@@ -30,7 +30,7 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
 
     @Override
     public PointsAdapter.PointsHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mActivity).inflate(R.layout.points_table_row, parent, false);
+        View view = LayoutInflater.from(mActivity).inflate(R.layout.player_stats_item_row, parent, false);
         return new PointsHolder(view);
     }
 
@@ -42,9 +42,12 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
         matchesWin = teamScore.getWins();
         matchesLost = teamScore.getLost();
         points = teamScore.getTotalPoints();
+        String cityName = teamScore.getCityName();
 
         if (!TextUtils.isEmpty(teamName))
             holder.tvTeamName.setText(teamName);
+        if (!TextUtils.isEmpty(cityName))
+            holder.tvCityName.setText(cityName);
         holder.tvPlayedMatches.setText(String.valueOf(playedMatches));
         holder.tvWins.setText(String.valueOf(matchesWin));
         holder.tvLoss.setText(String.valueOf(matchesLost));
@@ -58,6 +61,7 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
 
     class PointsHolder extends RecyclerView.ViewHolder {
         TextView tvTeamName;
+        TextView tvCityName;
         TextView tvPlayedMatches;
         TextView tvWins;
         TextView tvLoss;
@@ -66,11 +70,12 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
         public PointsHolder(View itemView) {
             super(itemView);
 
-            tvTeamName = (TextView) itemView.findViewById(R.id.points_table_row_tv_team_name);
-            tvPlayedMatches = (TextView) itemView.findViewById(R.id.points_table_row_tv_played);
-            tvWins = (TextView) itemView.findViewById(R.id.points_table_row_tv_wins);
-            tvLoss = (TextView) itemView.findViewById(R.id.points_table_row_tv_loss);
-            tvPoints = (TextView) itemView.findViewById(R.id.points_table_row_tv_points);
+            tvTeamName = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_player_name);
+            tvCityName = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_team_name);
+            tvPlayedMatches = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_matches);
+            tvWins = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_balls_faced);
+            tvLoss = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_runs_scored);
+            tvPoints = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_fours);
         }
     }
 }

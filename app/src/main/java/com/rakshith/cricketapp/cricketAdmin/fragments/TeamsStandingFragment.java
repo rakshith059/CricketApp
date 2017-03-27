@@ -51,11 +51,17 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
         rvTeamsScores = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         pbProgressBar = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
 
-        tvTeamName = (TextView) view.findViewById(R.id.points_table_row_tv_team_name);
-        tvPlayedMatches = (TextView) view.findViewById(R.id.points_table_row_tv_played);
-        tvWins = (TextView) view.findViewById(R.id.points_table_row_tv_wins);
-        tvLoss = (TextView) view.findViewById(R.id.points_table_row_tv_loss);
-        tvPoints = (TextView) view.findViewById(R.id.points_table_row_tv_points);
+        tvTeamName = (TextView) view.findViewById(R.id.player_stats_item_tv_player_name);
+        tvPlayedMatches = (TextView) view.findViewById(R.id.player_stats_item_tv_matches);
+        tvWins = (TextView) view.findViewById(R.id.player_stats_item_tv_balls_faced);
+        tvLoss = (TextView) view.findViewById(R.id.player_stats_item_tv_runs_scored);
+        tvPoints = (TextView) view.findViewById(R.id.player_stats_item_tv_fours);
+
+        tvTeamName.setText(getResources().getString(R.string.team_name));
+        tvPlayedMatches.setText(getResources().getString(R.string.p));
+        tvWins.setText(getResources().getString(R.string.w));
+        tvLoss.setText(getResources().getString(R.string.l));
+        tvPoints.setText(getResources().getString(R.string.pts));
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
@@ -67,8 +73,10 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
-            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_TEAM_STANDINGS);
-            ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+            if (bundle != null && ((HomeActivity) mActivity) != null) {
+                bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_TEAM_STANDINGS);
+                ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+            }
         }
     }
 
@@ -120,25 +128,25 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.points_table_row_tv_played:
+            case R.id.player_stats_item_tv_matches:
                 getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_MATCHES_PLAYED);
 
                 bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_MATCHES_PLAYED);
                 ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
-            case R.id.points_table_row_tv_wins:
+            case R.id.player_stats_item_tv_balls_faced:
                 getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_WINS);
 
                 bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_MATCHES_WINS);
                 ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
-            case R.id.points_table_row_tv_loss:
+            case R.id.player_stats_item_tv_runs_scored:
                 getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_LOSS);
 
                 bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_MATCHES_LOST);
                 ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
-            case R.id.points_table_row_tv_points:
+            case R.id.player_stats_item_tv_fours:
                 getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_TOTAL_POINT);
 
                 bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_TOTAL_POINTS);

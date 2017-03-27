@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/purple"
+    android:background="@color/colorPrimary"
     android:elevation="1dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:padding="@dimen/size_5dp">
 
     <TextView
         android:id="@+id/player_stats_item_tv_player_name"
@@ -15,7 +16,8 @@
         android:text="@string/player_name"
         android:textAllCaps="true"
         android:textColor="@color/white"
-        android:textSize="@dimen/size_16sp" />
+        android:textSize="@dimen/size_16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/player_stats_item_tv_matches"
@@ -29,7 +31,8 @@
         android:paddingTop="3dp"
         android:text="@string/mts"
         android:textColor="@color/white"
-        android:textSize="@dimen/size_16sp" />
+        android:textSize="@dimen/size_16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/player_stats_item_tv_balls_faced"
@@ -43,7 +46,8 @@
         android:paddingTop="3dp"
         android:text="@string/balls_faced"
         android:textColor="@color/white"
-        android:textSize="@dimen/size_16sp" />
+        android:textSize="@dimen/size_16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/player_stats_item_tv_runs_scored"
@@ -57,7 +61,8 @@
         android:paddingTop="3dp"
         android:text="@string/runs"
         android:textColor="@color/white"
-        android:textSize="@dimen/size_16sp" />
+        android:textSize="@dimen/size_16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/player_stats_item_tv_fours"
@@ -71,6 +76,7 @@
         android:paddingTop="3dp"
         android:text="@string/fours"
         android:textColor="@color/white"
-        android:textSize="@dimen/size_16sp" />
+        android:textSize="@dimen/size_16sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

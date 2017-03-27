@@ -56,6 +56,8 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
 //        toolbar = (Toolbar) findViewById(R.id.activity_home_detail_toolbar);
 //        setSupportActionBar(toolbar);
         Toolbar toolbarMain = (Toolbar) findViewById(R.id.toolbar);
@@ -63,8 +65,6 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mContext = this;
-
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 

@@ -60,13 +60,13 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
         }
         if (!TextUtils.isEmpty(playerRole)) {
             if (playerRole.equalsIgnoreCase(Constants.ROLE_BATSMEN))
-                roleImageId = R.drawable.vector_batsmen;
+                roleImageId = R.drawable.ic_batsman;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_BOWLER))
-                roleImageId = R.drawable.vector_ball;
+                roleImageId = R.drawable.ic_bowler;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_ALL_ROUNDER))
-                roleImageId = R.drawable.vector_all_rounder;
+                roleImageId = R.drawable.ic_all_rounder;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_KEEPER))
-                roleImageId = R.drawable.vector_keeper;
+                roleImageId = R.drawable.ic_wicket_keeper;
             else roleImageId = R.drawable.ic_rx1_logo;
 
             Glide.with(mActivity)

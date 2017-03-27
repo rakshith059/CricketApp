@@ -112,6 +112,7 @@ public class TeamsDetailFragment extends BaseFragment implements View.OnClickLis
     public void onClick(View v) {
         Bundle bundle = new Bundle();
         bundle.putString(Constants.TEAM_NAME, teamDetail.getTeamName());
+        bundle.putString(Constants.CITY_NAME, teamDetail.getCityName());
         ((HomeActivity) getActivity()).replaceFragment(new EditTeamScoreFragment(), getResources().getString(R.string.edit_team), bundle);
     }
 }

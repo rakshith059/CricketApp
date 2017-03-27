@@ -77,6 +77,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
     private int previousPoints = 0;
     private RadioGroup rgWinLost;
     private String winLost;
+    private String cityName;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,6 +86,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
         Bundle bundle = getArguments();
         if (bundle != null) {
             teamName = bundle.getString(Constants.TEAM_NAME);
+            cityName = bundle.getString(Constants.CITY_NAME);
         }
 
         tvTeamName = (TextView) view.findViewById(R.id.fragment_edit_team_score_tv_team_name);
@@ -239,7 +241,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
         wicketsTook = previousWicketsTook + wicketsTook;
 //        totalPoints = previousPoints + totalPoints;
 
-        TeamScore teamScore = new TeamScore(teamName, matchesPlayed, wins, lost, scoreFor, wicketsLost, scoreAgainst,
+        TeamScore teamScore = new TeamScore(teamName,cityName, matchesPlayed, wins, lost, scoreFor, wicketsLost, scoreAgainst,
                 wicketsTook, totalPoints);
         databaseReference.child(Constants.DB_TEAMS_SCORE).child(teamName).setValue(teamScore);
 

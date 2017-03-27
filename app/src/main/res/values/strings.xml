@@ -140,7 +140,7 @@
     <string name="maidens">maiden</string>
     <string name="catches">cts</string>
     <string name="run_outs">r/o</string>
-    <string name="stumps">stump</string>
+    <string name="stumps">stumps</string>
     <string name="upload">upload</string>
     <string name="title_activity_map">Map</string>
     <string name="create_matches">Enter matches</string>
@@ -155,6 +155,12 @@
     <string name="win">WON</string>
     <string name="lost">LOST</string>
     <string name="draw">DRAW</string>
+    <string name="player_detail">player detail</string>
+    <string name="matches_played">Matches played</string>
+    <string name="fielding_stats">Fielding stats</string>
+    <string name="wickets">Wickets</string>
+    <string name="caught">Catches</string>
+    <string name="run_out">run out</string>
 
 
 </resources>

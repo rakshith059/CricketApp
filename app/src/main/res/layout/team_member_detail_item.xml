@@ -1,26 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/team_member_detail_item_ll_main_container"
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal"
-    android:padding="@dimen/size_5dp">
+    android:layout_margin="@dimen/size_5dp"
+    android:backgroundTint="@color/purple"
+    android:elevation="@dimen/size_5dp"
+    app:cardCornerRadius="@dimen/size_5dp">
 
-    <TextView
-        android:id="@+id/team_member_detail_item_tv_name"
+    <LinearLayout
+        android:id="@+id/team_member_detail_item_ll_main_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/team_name"
-        android:textColor="@color/white"
-        android:textSize="@dimen/size_20sp"
-        android:textStyle="italic" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/size_5dp">
 
-    <ImageView
-        android:id="@+id/team_member_detail_item_iv_role"
-        android:layout_width="@dimen/size_50dp"
-        android:layout_height="@dimen/size_50dp"
-        android:src="@drawable/ic_rx1_logo" />
+        <TextView
+            android:id="@+id/team_member_detail_item_tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/player_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_20sp"
+            android:textStyle="italic|bold" />
 
-</LinearLayout>
+        <android.support.v7.widget.CardView
+            android:layout_width="@dimen/size_50dp"
+            android:layout_height="@dimen/size_50dp"
+            android:backgroundTint="@color/white"
+            android:elevation="@dimen/size_10dp"
+            app:cardCornerRadius="@dimen/size_10dp">
+
+            <ImageView
+                android:id="@+id/team_member_detail_item_iv_role"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

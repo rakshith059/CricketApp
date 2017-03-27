@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@color/purple"
     android:elevation="1dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:padding="@dimen/size_5dp">
 
     <TextView
         android:id="@+id/points_table_row_tv_team_name"

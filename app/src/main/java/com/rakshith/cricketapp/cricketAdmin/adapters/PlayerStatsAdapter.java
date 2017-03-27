@@ -1,6 +1,8 @@
 package com.rakshith.cricketapp.cricketAdmin.adapters;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.widget.TextView;
 
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
+import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
+import com.rakshith.cricketapp.cricketAdmin.fragments.PlayerDetailFragment;
 import com.rakshith.cricketapp.cricketAdmin.models.MemberStats;
 
 import java.util.List;
@@ -17,7 +21,7 @@ import java.util.List;
 /**
  * Created by rakshith on 3/15/17.
  */
-public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.PlayerStatViewHolder> {
+public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.PlayerStatViewHolder> implements View.OnClickListener {
     Activity activity;
     List<MemberStats> memberStatsList;
     String from;
@@ -30,7 +34,7 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 
     @Override
     public PlayerStatViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.player_stats_item, parent, false);
+        View view = LayoutInflater.from(activity).inflate(R.layout.player_stats_item_row, parent, false);
         return new PlayerStatViewHolder(view);
     }
 
@@ -52,6 +56,7 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 
         if (!TextUtils.isEmpty(playerName)) {
             holder.tvPlayerName.setText(playerName);
+            holder.tvTeamName.setText(memberStats.getmTeamName());
             holder.tvMatchesPlayed.setText(String.valueOf(matchesPlayed));
         }
         if (!TextUtils.isEmpty(from)) {
@@ -70,6 +75,8 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
             }
         }
 
+        holder.cvMainContainer.setTag(memberStats);
+        holder.cvMainContainer.setOnClickListener(this);
     }
 
     @Override
@@ -77,8 +84,24 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
         return memberStatsList.size();
     }
 
+    @Override
+    public void onClick(View v) {
+        MemberStats memberStats = (MemberStats) v.getTag();
+        switch (v.getId()) {
+            case R.id.player_stats_item_row_cv_main_container:
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(Constants.PLAYER_DETAIL, memberStats);
+                ((HomeActivity) activity).replaceFragment(new PlayerDetailFragment(), activity.getResources().getString(R.string.player_detail), bundle);
+                break;
+            default:
+                break;
+        }
+    }
+
     public class PlayerStatViewHolder extends RecyclerView.ViewHolder {
+        CardView cvMainContainer;
         TextView tvPlayerName;
+        TextView tvTeamName;
         TextView tvMatchesPlayed;
         TextView tvBallsOverCatches;
         TextView tvRunsWicketsRunOuts;
@@ -87,11 +110,13 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
         public PlayerStatViewHolder(View view) {
             super(view);
 
-            tvPlayerName = (TextView) view.findViewById(R.id.player_stats_item_tv_player_name);
-            tvMatchesPlayed = (TextView) view.findViewById(R.id.player_stats_item_tv_matches);
-            tvBallsOverCatches = (TextView) view.findViewById(R.id.player_stats_item_tv_balls_faced);
-            tvRunsWicketsRunOuts = (TextView) view.findViewById(R.id.player_stats_item_tv_runs_scored);
-            tvFoursMaidenStump = (TextView) view.findViewById(R.id.player_stats_item_tv_fours);
+            cvMainContainer = (CardView) view.findViewById(R.id.player_stats_item_row_cv_main_container);
+            tvPlayerName = (TextView) view.findViewById(R.id.player_stats_item_row_tv_player_name);
+            tvTeamName = (TextView) view.findViewById(R.id.player_stats_item_row_tv_team_name);
+            tvMatchesPlayed = (TextView) view.findViewById(R.id.player_stats_item_row_tv_matches);
+            tvBallsOverCatches = (TextView) view.findViewById(R.id.player_stats_item_row_tv_balls_faced);
+            tvRunsWicketsRunOuts = (TextView) view.findViewById(R.id.player_stats_item_row_tv_runs_scored);
+            tvFoursMaidenStump = (TextView) view.findViewById(R.id.player_stats_item_row_tv_fours);
         }
     }
 }

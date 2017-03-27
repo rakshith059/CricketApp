@@ -49,6 +49,7 @@ public class Constants {
     public static final String HASSAN = "HASSAN";
     public static final String TEAM_NAME = "team_name";
     public static final String PLAYER_NAME = "player_name";
+    public static final String PLAYER_DETAIL = "player_detail";
 
     public static final String RUN = "run";
     public static final String WICKET = "wicket";
@@ -60,6 +61,7 @@ public class Constants {
     public static final String MATCH_DETAIL = "match_detail";
     public static final String WIN = "win";
     public static final String LOST = "lost";
+    public static final String CITY_NAME = "city_name";
     public static String DRAW = "draw";
 
 
