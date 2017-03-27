@@ -27,9 +27,13 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
     private Activity mActivity;
     private ArrayList<MatchList> matchesList;
 
+    Bundle analyticsBundle;
+
     public MatchesAdapter(Activity mActivity, ArrayList<MatchList> matchesList) {
         this.mActivity = mActivity;
         this.matchesList = matchesList;
+
+        analyticsBundle = new Bundle();
     }
 
     @Override
@@ -73,6 +77,9 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
                     bundle.putParcelable(Constants.MATCH_DETAIL, matchList);
 
                     ((HomeActivity) mActivity).replaceFragment(new EditMatchesFragment(), mActivity.getResources().getString(R.string.enter_matches), bundle);
+
+                    analyticsBundle.putString(Constants.MATCH_NUM, matchList.getMatchNumber());
+                    ((HomeActivity) mActivity).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 }
                 break;
             default:

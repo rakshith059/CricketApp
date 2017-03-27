@@ -43,9 +43,13 @@ public class PoolsFragment extends BaseFragment {
     private RelativeLayout rlPoolsNotGenerated;
     private ProgressBar pbMainProgress;
 
+    Bundle bundle;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pools, container, false);
+
+        bundle = new Bundle();
 
         poolAAdapter = new PoolAAdapter();
         poolBAdapter = new PoolBAdapter();
@@ -56,6 +60,15 @@ public class PoolsFragment extends BaseFragment {
         pbMainProgress = (ProgressBar) view.findViewById(R.id.fragment_pools_pb_main_progress);
 
         return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_POOLS);
+            ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+        }
     }
 
     @Override

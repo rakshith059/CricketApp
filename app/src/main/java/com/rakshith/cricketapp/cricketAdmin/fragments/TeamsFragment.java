@@ -48,9 +48,13 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
     private String userIdPollB;
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
+    Bundle bundle;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teams_info, container, false);
+
+        bundle = new Bundle();
 
         teamsAdapter = new TeamsAdapter();
         tvAddTeam = (TextView) view.findViewById(R.id.fragment_teams_info_tv_add_teams);
@@ -58,6 +62,15 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
         rvTeamsList = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         pbProgressBar = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
         return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_TEAMS);
+            ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+        }
     }
 
     @Override

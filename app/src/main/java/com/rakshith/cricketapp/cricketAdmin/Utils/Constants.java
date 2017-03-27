@@ -62,6 +62,47 @@ public class Constants {
     public static final String LOST = "lost";
     public static String DRAW = "draw";
 
+
+    /**
+     * Constants for firebase analytics
+     */
+    public static String PARAM_SCREEN_NAME = "screen_name";
+    public static String PARAM_TEAM_NAME = "team_name";
+    public static String PARAM_MATCH_NO = "match_number";
+    public static String PARAM_ORDER_BY = "order_by";
+    public static String PARAM_ORDER_BY_BALLS_FACED = "order_by_balls_faced";
+    public static String PARAM_ORDER_BY_RUNS_SCORED = "order_by_runs_scored";
+    public static String PARAM_ORDER_BY_FOURS = "order_by_fours";
+    public static String PARAM_ORDER_BY_OVERS_BOWLED = "order_by_overs_bowled";
+    public static String PARAM_ORDER_BY_WICKETS_TOOK = "order_by_wickets_took";
+    public static String PARAM_ORDER_BY_MAIDEN = "order_by_maidens";
+    public static String PARAM_ORDER_BY_CATCHES = "order_by_catches";
+    public static String PARAM_ORDER_BY_RUNOUTS = "order_by_runouts";
+    public static String PARAM_ORDER_BY_STUMPS = "order_by_stumps";
+    public static String PARAM_ORDER_BY_MATCHES_PLAYED = "order_by_matches_played";
+    public static String PARAM_ORDER_BY_MATCHES_WINS = "order_by_matches_wins";
+    public static String PARAM_ORDER_BY_MATCHES_LOST = "order_by_matches_lost";
+    public static String PARAM_ORDER_BY_TOTAL_POINTS = "order_by_total_points";
+
+    public static final String PARAM_SCREEN_NAME_HOME = "screen_name_home";
+    public static String PARAM_SCREEN_NAME_TEAMS = "screen_name_teams";
+    public static String PARAM_SCREEN_NAME_POOLS = "screen_name_pools";
+    public static String PARAM_SCREEN_NAME_MATCHES = "screen_name_matches";
+    public static String PARAM_SCREEN_NAME_BATSMEN_STATS = "screen_name_batsmen_stats";
+    public static String PARAM_SCREEN_NAME_BOWLER_STATS = "screen_name_bowler_stats";
+    public static String PARAM_SCREEN_NAME_FIELDING_STATS = "screen_name_fielding_stats";
+    public static String PARAM_SCREEN_NAME_TEAM_STANDINGS = "screen_name_team_standings";
+    public static String PARAM_SCREEN_NAME_TEAM_DETAIL = "screen_name_team_detail";
+    public static String PARAM_SCREEN_NAME_PLAYER_DETAIL = "screen_name_player_detail";
+    public static String PARAM_SCREEN_NAME_MATCH_DETAIL = "screen_name_match_detail";
+    public static String PARAM_SCREEN_NAME_RULES = "screen_name_rules";
+    public static String PARAM_SCREEN_NAME_LOCATION = "screen_name_locations";
+    public static String PARAM_SCREEN_NAME_SPONSERS = "screen_name_sponsers";
+    public static String PARAM_SCREEN_NAME_ABOUT_US = "screen_name_about_us";
+
+    public static String EVENT_VIEW = "event_view";
+    public static String EVENT_CLICKED = "event_clicked";
+
     public void setFadeAnimation(View view) {
         AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
         anim.setDuration(FADE_DURATION);

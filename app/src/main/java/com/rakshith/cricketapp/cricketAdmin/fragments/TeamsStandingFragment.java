@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.Utils.RecyclerItemDecorator;
+import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
 import com.rakshith.cricketapp.cricketAdmin.adapters.PointsAdapter;
 import com.rakshith.cricketapp.cricketAdmin.models.TeamScore;
 
@@ -40,9 +41,13 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
     TextView tvLoss;
     TextView tvPoints;
 
+    Bundle bundle;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_team_standing, container, false);
+        bundle = new Bundle();
+
         rvTeamsScores = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         pbProgressBar = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
 
@@ -56,6 +61,15 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
         databaseReference = firebaseDatabase.getReference();
 
         return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_TEAM_STANDINGS);
+            ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+        }
     }
 
     @Override
@@ -108,15 +122,27 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
         switch (v.getId()) {
             case R.id.points_table_row_tv_played:
                 getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_MATCHES_PLAYED);
+
+                bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_MATCHES_PLAYED);
+                ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
             case R.id.points_table_row_tv_wins:
                 getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_WINS);
+
+                bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_MATCHES_WINS);
+                ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
             case R.id.points_table_row_tv_loss:
                 getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_LOSS);
+
+                bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_MATCHES_LOST);
+                ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
             case R.id.points_table_row_tv_points:
                 getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_TOTAL_POINT);
+
+                bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_TOTAL_POINTS);
+                ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
             default:
                 break;

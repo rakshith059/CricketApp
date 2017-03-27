@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.Utils.RecyclerItemDecorator;
+import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
 import com.rakshith.cricketapp.cricketAdmin.adapters.PlayerStatsAdapter;
 import com.rakshith.cricketapp.cricketAdmin.models.MemberStats;
 
@@ -42,12 +43,16 @@ public class FieldersFragment extends BaseFragment implements View.OnClickListen
     RecyclerView rvPlayerStats;
     ProgressBar pbProgress;
 
+    Bundle bundle;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.player_fragment_stats, container, false);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+
+        bundle = new Bundle();
 
         rvPlayerStats = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         pbProgress = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
@@ -59,6 +64,15 @@ public class FieldersFragment extends BaseFragment implements View.OnClickListen
         tvFoursMaidenStump = (TextView) view.findViewById(R.id.player_stats_item_tv_fours);
 
         return view;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_FIELDING_STATS);
+            ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+        }
     }
 
     @Override
@@ -106,12 +120,21 @@ public class FieldersFragment extends BaseFragment implements View.OnClickListen
         switch (v.getId()) {
             case R.id.player_stats_item_tv_balls_faced:
                 getPlayerStats(Constants.DB_PLAYER_STATS_CHILD_CATCHES);
+
+                bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_CATCHES);
+                ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
             case R.id.player_stats_item_tv_runs_scored:
                 getPlayerStats(Constants.DB_PLAYER_STATS_CHILD_RUNOUTS);
+
+                bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_RUNOUTS);
+                ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
             case R.id.player_stats_item_tv_fours:
                 getPlayerStats(Constants.DB_PLAYER_STATS_CHILD_STUMPS);
+
+                bundle.putString(Constants.PARAM_ORDER_BY, Constants.PARAM_ORDER_BY_STUMPS);
+                ((HomeActivity) getActivity()).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 break;
             default:
                 break;

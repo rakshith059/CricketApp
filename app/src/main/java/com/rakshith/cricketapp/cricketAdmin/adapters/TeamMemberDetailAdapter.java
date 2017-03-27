@@ -98,6 +98,8 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
         bundle.putString(Constants.PLAYER_NAME, memberName);
         ((HomeActivity) mActivity).replaceFragment(new EditTeamMemberStatsFragment(),
                 mActivity.getResources().getString(R.string.member_stats), bundle);
+
+        ((HomeActivity) mActivity).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
     }
 
     public class MemberViewHolder extends RecyclerView.ViewHolder {

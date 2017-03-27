@@ -36,6 +36,8 @@ public class TeamsDetailFragment extends BaseFragment implements View.OnClickLis
     private int backgroundImageId;
     private TextView tvEditTeamScore;
 
+    Bundle analyticsBundle;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.from(mActivity).inflate(R.layout.fragment_teams_detail, container, false);
@@ -44,6 +46,11 @@ public class TeamsDetailFragment extends BaseFragment implements View.OnClickLis
         if (bundle != null) {
             teamDetail = bundle.getParcelable(Constants.TEAM_DETAIL);
         }
+
+        analyticsBundle = new Bundle();
+        analyticsBundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_TEAM_DETAIL);
+        ((HomeActivity) mActivity).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+
 
         ivCollapseImage = (ImageView) view.findViewById(R.id.fragment_teams_detail_iv_collapse_image);
         toolbar = (Toolbar) view.findViewById(R.id.fragment_teams_detail_toolbar);

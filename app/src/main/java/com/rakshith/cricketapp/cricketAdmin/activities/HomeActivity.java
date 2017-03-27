@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -23,11 +24,13 @@ import com.google.android.gms.appinvite.AppInviteReferral;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.rakshith.cricketapp.Fragments.AboutUsFragment;
 import com.rakshith.cricketapp.Fragments.RulesFragment;
 import com.rakshith.cricketapp.R;
+import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.fragments.HomeFragment;
 
 import java.util.ArrayList;
@@ -38,9 +41,11 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
     ArrayList<Fragment> mFragmentList = new ArrayList<Fragment>();
     AppCompatActivity mContext;
     Fragment mFragment;
-//    private Toolbar toolbar;
+    //    private Toolbar toolbar;
     private AdView mAdView;
     private GoogleApiClient mGoogleApiClient;
+
+    FirebaseAnalytics firebaseAnalytics;
 
     private StorageReference mStorageRef;
 //    ViewPager vpPager;
@@ -58,6 +63,8 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mContext = this;
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         mStorageRef = FirebaseStorage.getInstance().getReference();
 
@@ -178,24 +185,40 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        Bundle bundle = new Bundle();
         if (id == R.id.nav_home) {
             replaceFragment(new HomeFragment(), null, null);
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_HOME);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_rules) {
             replaceFragment(new RulesFragment(), "rulesFragment", null);
-        }
-//        else if (id == R.id.nav_stats) {
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_RULES);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+        } else if (id == R.id.nav_sponsors) {
+            // TODO: 3/27/17 create sponsor fragment
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_SPONSERS);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 //            replaceFragment(new StatsFragment(), "statsFragment", null);
-//        }
-        else if (id == R.id.nav_about_us) {
-            replaceFragment(new AboutUsFragment(), "aboutUsFragment", null);
+        } else if (id == R.id.nav_about_us) {
+            // TODO: 3/27/17 create about us fragment
+//            replaceFragment(new AboutUsFragment(), "aboutUsFragment", null);
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_ABOUT_US);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_location) {
-            Intent intent = new Intent(this , MapActivity.class);
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_LOCATION);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+
+            Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void fireBaseAnalyticsEvents(String eventName, Bundle bundle) {
+        if (bundle != null)
+            firebaseAnalytics.logEvent(eventName, bundle);
     }
 }

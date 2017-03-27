@@ -106,6 +106,9 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHol
         Bundle bundle = new Bundle();
         bundle.putParcelable(Constants.TEAM_DETAIL, teamDetail);
         ((HomeActivity) mActivity).replaceFragment(new TeamsDetailFragment(), mActivity.getResources().getString(R.string.teams_detail), bundle);
+
+        bundle.putString(Constants.PARAM_TEAM_NAME, teamDetail.getTeamName());
+        ((HomeActivity) mActivity).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
     }
 
     public class TeamsViewHolder extends RecyclerView.ViewHolder {
