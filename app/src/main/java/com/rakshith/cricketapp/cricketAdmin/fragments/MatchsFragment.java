@@ -39,13 +39,11 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
     int totalMatches;
     private ArrayList<MatchList> matchesList;
     private MatchesAdapter matchesAdapter;
-    private Bundle bundle;
+    Bundle bundle = new Bundle();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_matches, container, false);
-
-        bundle = new Bundle();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();

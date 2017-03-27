@@ -42,13 +42,11 @@ public class BatsmenFragment extends BaseFragment implements View.OnClickListene
     PlayerStatsAdapter playerStatsAdapter;
     RecyclerView rvPlayerStats;
     ProgressBar pbProgress;
-    private Bundle bundle;
+    Bundle bundle = new Bundle();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.player_fragment_stats, container, false);
-
-        bundle = new Bundle();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();

@@ -43,13 +43,11 @@ public class PoolsFragment extends BaseFragment {
     private RelativeLayout rlPoolsNotGenerated;
     private ProgressBar pbMainProgress;
 
-    Bundle bundle;
+    Bundle bundle = new Bundle();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_pools, container, false);
-
-        bundle = new Bundle();
 
         poolAAdapter = new PoolAAdapter();
         poolBAdapter = new PoolBAdapter();
