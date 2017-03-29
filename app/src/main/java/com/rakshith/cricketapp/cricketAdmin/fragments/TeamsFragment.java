@@ -1,6 +1,8 @@
 package com.rakshith.cricketapp.cricketAdmin.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,12 +15,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.Utils.RecyclerItemDecorator;
@@ -28,18 +33,18 @@ import com.rakshith.cricketapp.cricketAdmin.models.TeamList;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * Created by rakshith on 3/10/17.
  */
 public class TeamsFragment extends BaseFragment implements View.OnClickListener {
-    TextView tvAddTeam;
+    //    TextView tvAddTeam;
     RecyclerView rvTeamsList;
 
     TeamsAdapter teamsAdapter;
     ProgressBar pbProgressBar;
-    TextView tvCreatePool;
 
     List teams;
     private List pollATeams;
@@ -49,17 +54,42 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
     FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
     Bundle bundle = new Bundle();
+    private FloatingActionButton fabAddTeam;
+    private int teamSize;
+    private FloatingActionButton fabCreatePool;
+    FirebaseRemoteConfig remoteConfig;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teams_info, container, false);
 
+        remoteConfig = FirebaseRemoteConfig.getInstance();
+        remoteConfig.setConfigSettings(new FirebaseRemoteConfigSettings.Builder().setDeveloperModeEnabled(true)
+                .build());
+
+        HashMap<String, Object> defaults = new HashMap<>();
+        defaults.put(getResources().getString(R.string.team_size), 8);
+        remoteConfig.setDefaults(defaults);
+
         teamsAdapter = new TeamsAdapter();
-        tvAddTeam = (TextView) view.findViewById(R.id.fragment_teams_info_tv_add_teams);
-        tvCreatePool = (TextView) view.findViewById(R.id.fragment_teams_info_tv_create_pools);
+//        tvAddTeam = (TextView) view.findViewById(R.id.fragment_teams_info_tv_add_teams);
+        fabAddTeam = (FloatingActionButton) view.findViewById(R.id.fragment_teams_info_fab_add_teams);
+        fabCreatePool = (FloatingActionButton) view.findViewById(R.id.fragment_teams_info_fab_create_pools);
         rvTeamsList = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         pbProgressBar = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
         return view;
+    }
+
+    private void displayHideLayoutAfterReachingMaxTeam(int teamSize) {
+        if (teams != null && teams.size() > 0) {
+            if (teams.size() == teamSize) {
+                fabAddTeam.setVisibility(View.GONE);
+                checkPoolsCreatedOrNot();
+            } else {
+                fabAddTeam.setVisibility(View.VISIBLE);
+                fabCreatePool.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
@@ -83,15 +113,21 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
         rvTeamsList.setLayoutManager(linearLayoutManager);
         getTeamsListIfInternetAvailable();
 
-        tvAddTeam.setOnClickListener(this);
-        tvCreatePool.setOnClickListener(this);
+        fabCreatePool.setOnClickListener(this);
+        fabAddTeam.setOnClickListener(this);
     }
 
     private void getTeamsListIfInternetAvailable() {
         pbProgressBar.setVisibility(View.VISIBLE);
         if (((HomeActivity) getActivity()).isNetworkAvailable(mActivity)) {
             getTeamsList();
-            checkPoolsCreatedOrNot();
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    fetchFromRemoteConfig();
+                }
+            }, 500);
         } else {
             pbProgressBar.setVisibility(View.GONE);
 
@@ -106,15 +142,27 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
         }
     }
 
+    private void fetchFromRemoteConfig() {
+        final Task<Void> fetch = remoteConfig.fetch(0);
+        fetch.addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                remoteConfig.activateFetched();
+                teamSize = (int) remoteConfig.getLong(getResources().getString(R.string.team_size));
+                displayHideLayoutAfterReachingMaxTeam(teamSize);
+            }
+        });
+    }
+
     private void checkPoolsCreatedOrNot() {
         firebaseDatabase.getReference().child(Constants.DB_POLL_A).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 long poolTeamCount = dataSnapshot.getChildrenCount();
                 if (poolTeamCount > 0) {
-                    tvCreatePool.setVisibility(View.GONE);
+                    fabCreatePool.setVisibility(View.GONE);
                 } else
-                    tvCreatePool.setVisibility(View.VISIBLE);
+                    fabCreatePool.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -140,6 +188,7 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
                     Log.d("Rakshith", "team name " + teamList.getTeamName() + " " + "captain name " + teamList.getTeamMembers().get(1).getName() + teamList.getTeamMembers().get(1).getRole());
                 }
 //                adapter.updateList(notes);
+                fetchFromRemoteConfig();
                 teamsAdapter.updateTeamsList(mActivity, teams);
                 rvTeamsList.setAdapter(teamsAdapter);
             }
@@ -154,10 +203,13 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fragment_teams_info_tv_add_teams:
+//            case R.id.fragment_teams_info_tv_add_teams:
+//                ((HomeActivity) getActivity()).replaceFragment(new AddNewTeamFragment(), getResources().getString(R.string.add_new_teams), null);
+//                break;
+            case R.id.fragment_teams_info_fab_add_teams:
                 ((HomeActivity) getActivity()).replaceFragment(new AddNewTeamFragment(), getResources().getString(R.string.add_new_teams), null);
                 break;
-            case R.id.fragment_teams_info_tv_create_pools:
+            case R.id.fragment_teams_info_fab_create_pools:
                 shuffleTeamsAndCreatePools();
                 break;
         }
@@ -192,7 +244,7 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
                                 @Override
                                 public void onComplete(Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        tvCreatePool.setVisibility(View.GONE);
+                                        fabCreatePool.setVisibility(View.GONE);
                                     }
                                 }
                             });

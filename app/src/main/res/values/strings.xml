@@ -161,6 +161,8 @@
     <string name="wickets">Wickets</string>
     <string name="caught">Catches</string>
     <string name="run_out">run out</string>
+    <string name="title_activity_dummy">DummyActivity</string>
+    <string name="team_size">team_size</string>
 
 
 </resources>

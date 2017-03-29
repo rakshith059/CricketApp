@@ -2,6 +2,7 @@ package com.rakshith.cricketapp.cricketAdmin.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +32,6 @@ import java.util.ArrayList;
 public class MatchsFragment extends BaseFragment implements View.OnClickListener {
     RecyclerView rvMatches;
     ProgressBar progressBar;
-    CardView cvEnterMatches;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -40,6 +40,7 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
     private ArrayList<MatchList> matchesList;
     private MatchesAdapter matchesAdapter;
     Bundle bundle = new Bundle();
+    private FloatingActionButton fabEnterMatches;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
 
         rvMatches = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         progressBar = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
-        cvEnterMatches = (CardView) view.findViewById(R.id.fragment_matches_cv_enter_matches);
+        fabEnterMatches = (FloatingActionButton) view.findViewById(R.id.fragment_matches_fab_enter_matches);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -101,13 +102,13 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        cvEnterMatches.setOnClickListener(this);
+        fabEnterMatches.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.fragment_matches_cv_enter_matches:
+            case R.id.fragment_matches_fab_enter_matches:
                 Bundle bundle = new Bundle();
                 bundle.putString(Constants.MATCH_NUM, "Match " + totalMatches);
 

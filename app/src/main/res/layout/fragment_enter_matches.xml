@@ -40,7 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:prompt="@string/hint_team_name" />
+                android:prompt="@string/hint_team_name"
+                android:visibility="gone" />
         </LinearLayout>
 
         <android.support.v7.widget.CardView

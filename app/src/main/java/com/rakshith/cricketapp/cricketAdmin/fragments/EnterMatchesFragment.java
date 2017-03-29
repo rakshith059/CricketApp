@@ -2,9 +2,6 @@ package com.rakshith.cricketapp.cricketAdmin.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,8 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -30,7 +25,6 @@ import com.rakshith.cricketapp.cricketAdmin.models.MatchList;
 import com.rakshith.cricketapp.cricketAdmin.models.TeamList;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by rakshith on 3/26/17.
@@ -44,7 +38,8 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
 
     Spinner spTeamOneName;
     Spinner spTeamTwoName;
-    private ArrayList<String> teamNames;
+    private ArrayList<String> teamOneNamesList;
+    private ArrayList<String> teamTwoNamesList;
 
     private String teamOneName;
     private String teamTwoName;
@@ -79,10 +74,10 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        teamNames = new ArrayList<>();
+                        teamOneNamesList = new ArrayList<>();
                         for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                             TeamList teamList = noteDataSnapshot.getValue(TeamList.class);
-                            teamNames.add(teamList.getTeamName());
+                            teamOneNamesList.add(teamList.getTeamName());
                         }
                     }
 
@@ -105,14 +100,13 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (teamNames != null && teamNames.size() > 0) {
-                    ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_spinner_item, teamNames);
+                if (teamOneNamesList != null && teamOneNamesList.size() > 0) {
+                    ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_spinner_item, teamOneNamesList);
                     // Drop down layout style - list view with radio button
                     teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
                     // attaching data adapter to spinner
                     spTeamOneName.setAdapter(teamAdapter);
-                    spTeamTwoName.setAdapter(teamAdapter);
                 }
             }
         }, 500);
@@ -124,7 +118,15 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
         spTeamOneName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                teamTwoNamesList = new ArrayList<String>(teamOneNamesList);
                 teamOneName = parent.getItemAtPosition(position).toString();
+                teamTwoNamesList.remove(position);
+
+                spTeamTwoName.setVisibility(View.VISIBLE);
+                ArrayAdapter<String> teamAdapter = new ArrayAdapter<String>(mActivity, android.R.layout.simple_spinner_item, teamTwoNamesList);
+                // Drop down layout style - list view with radio button
+                teamAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spTeamTwoName.setAdapter(teamAdapter);
             }
 
             @Override

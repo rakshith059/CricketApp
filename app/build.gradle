@@ -26,7 +26,8 @@ android {
         }
         debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), "$project.rootDir/proguard-rules.txt"
+            shrinkResources false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), "$project.rootDir/proguard-rules.txt"
         }
     }
 
