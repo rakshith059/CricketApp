@@ -29,6 +29,7 @@ import com.rakshith.cricketapp.cricketAdmin.fragments.RulesFragment;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.fragments.HomeFragment;
+import com.rakshith.cricketapp.cricketAdmin.fragments.SponserFragment;
 
 import java.util.ArrayList;
 
@@ -193,6 +194,7 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_sponsors) {
             // TODO: 3/27/17 create sponsor fragment
+            replaceFragment(new SponserFragment(), "sponsorScreen", null);
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_SPONSERS);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 //            replaceFragment(new StatsFragment(), "statsFragment", null);

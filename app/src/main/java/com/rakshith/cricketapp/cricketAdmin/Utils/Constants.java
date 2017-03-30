@@ -17,6 +17,7 @@ public class Constants {
     public static final String DB_TEAMS_SCORE = "teamsScore";
     public static final String DB_PLAYER_STATS = "playerStats";
     public static final String DB_MATCHES = "matches";
+    public static final String DB_SPONSORS = "sponsors";
 
     public static final String DB_TEAMS_SCORE_CHILD_TOTAL_POINT = "totalPoints";
     public static final String DB_PLAYER_STATS_CHILD_RUNS = "iRunsScored";

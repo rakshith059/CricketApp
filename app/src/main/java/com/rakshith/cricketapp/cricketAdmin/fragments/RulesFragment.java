@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.rakshith.cricketapp.R;
 
 /**
@@ -15,10 +17,13 @@ import com.rakshith.cricketapp.R;
 public class RulesFragment extends Fragment {
 
     TextView tvValuablePlayerRules;
+    AdView mAdView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.rules_fragment , container , false);
+        View view = inflater.inflate(R.layout.rules_fragment, container, false);
+
+        mAdView = (AdView) view.findViewById(R.id.rules_fragment_ad_view);
         return view;
     }
 
@@ -27,5 +32,7 @@ public class RulesFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         tvValuablePlayerRules = (TextView) getView().findViewById(R.id.rules_fragment_valuable_player_rules);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
     }
 }

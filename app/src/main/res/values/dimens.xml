@@ -29,4 +29,5 @@
     <dimen name="size_3dp">3dp</dimen>
     <dimen name="size_75dp">75dp</dimen>
     <dimen name="size_12sp">12sp</dimen>
+    <dimen name="size_125dp">125dp</dimen>
 </resources>

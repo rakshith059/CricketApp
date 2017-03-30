@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.rakshith.cricketapp.cricketAdmin.Utils.RecyclerItemDecorator;
 import com.rakshith.cricketapp.cricketAdmin.adapters.RecyclerAboutUsAdapter;
 import com.rakshith.cricketapp.R;
@@ -21,12 +23,18 @@ import java.util.List;
 public class AboutUsFragment extends BaseFragment {
     RecyclerView rvRecyclerView;
     RecyclerAboutUsAdapter aboutUsAdapter;
+    AdView mAdView;
 
     List<String> aboutUsList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.common_recycler_view, container, false);
+
+        mAdView = (AdView) view.findViewById(R.id.common_recycler_view_ad_view);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        
         return view;
     }
 
@@ -50,7 +58,6 @@ public class AboutUsFragment extends BaseFragment {
     private void aboutUsList() {
         aboutUsList.add("KARTHIK L M");
         aboutUsList.add("NATRAJ");
-        aboutUsList.add("NAVEEN");
         aboutUsList.add("NITHIN");
         aboutUsList.add("SHRAVAN");
         aboutUsList.add("SANDEEP");
@@ -64,16 +71,10 @@ public class AboutUsFragment extends BaseFragment {
         aboutUsList.add("SOMASHEKAR");
         aboutUsList.add("JOSHI");
         aboutUsList.add("PRASANA");
-        aboutUsList.add("CHETHAN");
         aboutUsList.add("SHARATH");
-        aboutUsList.add("LOHIT");
         aboutUsList.add("KARTHIK");
-        aboutUsList.add("DATHA");
         aboutUsList.add("BALAJI");
-        aboutUsList.add("SHASHWAT");
         aboutUsList.add("LINGA");
-        aboutUsList.add("AKARSH");
-        aboutUsList.add("SHIVU");
         aboutUsList.add("HARI");
         aboutUsList.add("GIRISH");
         aboutUsList.add("ANJAN");
