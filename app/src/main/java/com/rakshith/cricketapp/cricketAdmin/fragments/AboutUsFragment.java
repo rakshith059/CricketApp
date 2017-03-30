@@ -1,4 +1,4 @@
-package com.rakshith.cricketapp.Fragments;
+package com.rakshith.cricketapp.cricketAdmin.fragments;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -7,9 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rakshith.cricketapp.Adapters.RecyclerAboutUsAdapter;
+import com.rakshith.cricketapp.cricketAdmin.Utils.RecyclerItemDecorator;
+import com.rakshith.cricketapp.cricketAdmin.adapters.RecyclerAboutUsAdapter;
 import com.rakshith.cricketapp.R;
-import com.rakshith.cricketapp.Utils.RecyclerItemDecorator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,26 +23,27 @@ public class AboutUsFragment extends BaseFragment {
     RecyclerAboutUsAdapter aboutUsAdapter;
 
     List<String> aboutUsList = new ArrayList<>();
-    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.common_recycler_view , container , false);
+        View view = inflater.inflate(R.layout.common_recycler_view, container, false);
         return view;
     }
 
     @Override
-    public void onActivityCreated( Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        rvRecyclerView = (RecyclerView) getView().findViewById(R.id.common_recycler_view_rv_view);
+        rvRecyclerView = (RecyclerView) getView().findViewById(R.id.common_recycler_view_rv);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvRecyclerView.setLayoutManager(linearLayoutManager);
-        rvRecyclerView.addItemDecoration(new RecyclerItemDecorator(3));
+        rvRecyclerView.addItemDecoration(new RecyclerItemDecorator(5));
         aboutUsList();
 
         Collections.sort(aboutUsList, String.CASE_INSENSITIVE_ORDER);
 
-        aboutUsAdapter = new RecyclerAboutUsAdapter(getActivity() , aboutUsList);
+        aboutUsAdapter = new RecyclerAboutUsAdapter(getActivity(), aboutUsList);
         rvRecyclerView.setAdapter(aboutUsAdapter);
     }
 

@@ -1,4 +1,4 @@
-package com.rakshith.cricketapp.Fragments;
+package com.rakshith.cricketapp.cricketAdmin.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

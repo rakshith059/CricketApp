@@ -1,4 +1,4 @@
-package com.rakshith.cricketapp.Adapters;
+package com.rakshith.cricketapp.cricketAdmin.adapters;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;

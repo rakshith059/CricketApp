@@ -1,4 +1,4 @@
-package com.rakshith.cricketapp.Interfaces;
+package com.rakshith.cricketapp.cricketAdmin.Interfaces;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
