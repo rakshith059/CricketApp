@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,6 +45,7 @@ public class BatsmenFragment extends BaseFragment implements View.OnClickListene
     RecyclerView rvPlayerStats;
     ProgressBar pbProgress;
     Bundle bundle = new Bundle();
+    private AdView mAdView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +63,10 @@ public class BatsmenFragment extends BaseFragment implements View.OnClickListene
         tvRunsWicketsRunOuts = (TextView) view.findViewById(R.id.player_stats_item_tv_runs_scored);
         tvFoursMaidenStump = (TextView) view.findViewById(R.id.player_stats_item_tv_fours);
 
+
+        mAdView = (AdView) view.findViewById(R.id.common_recycler_view_ad_view);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         return view;
     }
 
@@ -95,9 +102,11 @@ public class BatsmenFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void getPlayerStats(String orderByChildValue) {
+        pbProgress.setVisibility(View.VISIBLE);
         databaseReference.child(Constants.DB_PLAYER_STATS).orderByChild(orderByChildValue).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                pbProgress.setVisibility(View.GONE);
                 List<MemberStats> memberStatsList = new ArrayList<MemberStats>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     MemberStats memberStats = snapshot.getValue(MemberStats.class);

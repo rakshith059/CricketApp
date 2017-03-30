@@ -161,7 +161,7 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
     }
 
     private void submitMatches() {
-        final MatchList matchList = new MatchList(matchNumber, teamOneName, "", "", teamTwoName, "", "", "", "", "", "");
+        final MatchList matchList = new MatchList(matchNumber, teamOneName, "", "", teamTwoName, "", "", "", "", "", "", "");
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

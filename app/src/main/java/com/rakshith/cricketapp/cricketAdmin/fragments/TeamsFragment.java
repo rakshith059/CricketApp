@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -58,6 +60,7 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
     private int teamSize;
     private FloatingActionButton fabCreatePool;
     FirebaseRemoteConfig remoteConfig;
+    private AdView mAdView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -77,6 +80,11 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
         fabCreatePool = (FloatingActionButton) view.findViewById(R.id.fragment_teams_info_fab_create_pools);
         rvTeamsList = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         pbProgressBar = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
+
+        mAdView = (AdView) view.findViewById(R.id.common_recycler_view_ad_view);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         return view;
     }
 

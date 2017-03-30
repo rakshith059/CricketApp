@@ -163,6 +163,7 @@
     <string name="run_out">run out</string>
     <string name="title_activity_dummy">DummyActivity</string>
     <string name="team_size">team_size</string>
+    <string name="match_tied_between">Match tied between</string>
 
 
 </resources>

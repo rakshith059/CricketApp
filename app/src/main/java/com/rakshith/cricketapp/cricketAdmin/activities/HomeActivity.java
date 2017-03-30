@@ -42,7 +42,7 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
     AppCompatActivity mContext;
     Fragment mFragment;
     //    private Toolbar toolbar;
-    private AdView mAdView;
+//    private AdView mAdView;
     private GoogleApiClient mGoogleApiClient;
 
     FirebaseAnalytics firebaseAnalytics;
@@ -80,9 +80,9 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+//        mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
 
 //        vpPager = (ViewPager) findViewById(R.id.activity_main_vp_pager);
 //        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());

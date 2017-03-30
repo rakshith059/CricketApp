@@ -26,7 +26,6 @@
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/macthes_fragment_srl_refresh_container"
-        android:layout_above="@id/adView"
         android:layout_below="@+id/ad_layout_native_ad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

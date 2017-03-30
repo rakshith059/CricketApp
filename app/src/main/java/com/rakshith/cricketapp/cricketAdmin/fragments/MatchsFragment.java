@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +43,7 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
     private MatchesAdapter matchesAdapter;
     Bundle bundle = new Bundle();
     private FloatingActionButton fabEnterMatches;
+    private AdView mAdView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +55,10 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
         rvMatches = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         progressBar = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
         fabEnterMatches = (FloatingActionButton) view.findViewById(R.id.fragment_matches_fab_enter_matches);
+
+        mAdView = (AdView) view.findViewById(R.id.common_recycler_view_ad_view);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

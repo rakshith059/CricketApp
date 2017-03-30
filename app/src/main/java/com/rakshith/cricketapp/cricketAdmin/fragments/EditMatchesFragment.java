@@ -5,7 +5,9 @@ import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -58,7 +60,8 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
     TextView tvTeamTwoName;
 
     Spinner spTeamTossWinTeam;
-    Spinner spTeamMatchWinTeam;
+    //    Spinner spTeamMatchWinTeam;
+    TextView tvTeamMatchWinBy;
     Spinner spRunsWickets;
     private ArrayList<String> teamNames;
 
@@ -71,12 +74,13 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
     private String tossWinByTeam;
     private String matchWinByTeam;
     private String winByRunsWickets;
-    private String runsWickets;
+    private String runsWicketsFrom;
     private String manOfTheMatch;
     private String matchNumber;
     private LinearLayout llTossWin;
 
     MatchList matchList;
+    LinearLayout llWinByRunsWickets;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -102,6 +106,8 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
         tilWinByRunsWickets = (TextInputLayout) view.findViewById(R.id.fragment_enter_matches_til_runs_wickets);
         tilManOfTheMatch = (TextInputLayout) view.findViewById(R.id.fragment_enter_matches_til_mom);
 
+        llWinByRunsWickets = (LinearLayout) view.findViewById(R.id.fragment_edit_matches_ll_runs_wickets);
+
         etTeamOneRuns = (EditText) view.findViewById(R.id.fragment_enter_matches_et_team_one_runs);
         etTeamOneWickets = (EditText) view.findViewById(R.id.fragment_enter_matches_et_team_one_wickets);
         etTeamTwoRuns = (EditText) view.findViewById(R.id.fragment_enter_matches_et_team_two_runs);
@@ -113,8 +119,10 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
         tvTeamTwoName = (TextView) view.findViewById(R.id.fragment_enter_matches_tv_team_two);
 
         spTeamTossWinTeam = (Spinner) view.findViewById(R.id.fragment_enter_matches_sp_team_toss_win);
-        spTeamMatchWinTeam = (Spinner) view.findViewById(R.id.fragment_enter_matches_sp_team_match_win);
+//        spTeamMatchWinTeam = (Spinner) view.findViewById(R.id.fragment_enter_matches_sp_team_match_win);
         spRunsWickets = (Spinner) view.findViewById(R.id.fragment_enter_matches_sp_runs_wickets);
+
+        tvTeamMatchWinBy = (TextView) view.findViewById(R.id.fragment_edit_matches_tv_match_win_by);
 
         llTossWin = (LinearLayout) view.findViewById(R.id.fragment_enter_matches_ll_toss_win);
 
@@ -157,6 +165,7 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
         tossWinByTeam = matchList.getTossWinByTeam();
         matchWinByTeam = matchList.getMatchWinByTeam();
         winByRunsWickets = matchList.getWinByRunsWickets();
+        runsWicketsFrom = matchList.getRunsWickets();
         manOfTheMatch = matchList.getManOfTheMatch();
 
         if (!TextUtils.isEmpty(matchNumber))
@@ -178,6 +187,41 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
         if (!TextUtils.isEmpty(manOfTheMatch))
             etManOfTheMatch.setText(manOfTheMatch);
 
+        if (!TextUtils.isEmpty(teamOneRuns) && !TextUtils.isEmpty(teamTwoRuns)) {
+            displayWinByTeamLayout(teamOneRuns, teamTwoRuns);
+        }
+
+        etTeamTwoRuns.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                displayWinByTeamLayout(etTeamOneRuns.getText().toString(), s.toString());
+            }
+        });
+        etTeamOneRuns.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                displayWinByTeamLayout(s.toString(), etTeamTwoRuns.getText().toString());
+            }
+        });
+
         displayTossWinLayout();
 
         ArrayList<String> runsWickets = new ArrayList<>();
@@ -192,6 +236,13 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
         spRunsWickets.setAdapter(runsWicketsAdapter);
 
         setOnItemSelectedForSpinner();
+
+        if (!TextUtils.isEmpty(tossWinByTeam)) {
+            spTeamTossWinTeam.setSelection(((ArrayAdapter<String>) spTeamTossWinTeam.getAdapter()).getPosition(tossWinByTeam));
+        }
+        if (!TextUtils.isEmpty(runsWicketsFrom)) {
+            spRunsWickets.setSelection(((ArrayAdapter<String>) spRunsWickets.getAdapter()).getPosition(runsWicketsFrom));
+        }
     }
 
     private void setOnItemSelectedForSpinner() {
@@ -206,21 +257,21 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
 
             }
         });
-        spTeamMatchWinTeam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                matchWinByTeam = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        spTeamMatchWinTeam.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                matchWinByTeam = parent.getItemAtPosition(position).toString();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
         spRunsWickets.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                runsWickets = parent.getItemAtPosition(position).toString();
+                runsWicketsFrom = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -241,7 +292,7 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
             teamsPlayingAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
             spTeamTossWinTeam.setAdapter(teamsPlayingAdapter);
-            spTeamMatchWinTeam.setAdapter(teamsPlayingAdapter);
+//            spTeamMatchWinTeam.setAdapter(teamsPlayingAdapter);
         }
 
     }
@@ -280,10 +331,30 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
             winByRunsWickets = mWinByRunsWickets;
         if (!TextUtils.isEmpty(mManOfTheMatch))
             manOfTheMatch = mManOfTheMatch;
+
+        displayWinByTeamLayout(mTeamOneRun, mTeamTwoRun);
+    }
+
+    private void displayWinByTeamLayout(String mTeamOneRun, String mTeamTwoRun) {
+        if (!TextUtils.isEmpty(mTeamOneRun) && !TextUtils.isEmpty(mTeamTwoRun)) {
+            if (Integer.valueOf(mTeamOneRun) > Integer.valueOf(mTeamTwoRun)) {
+                llWinByRunsWickets.setVisibility(View.VISIBLE);
+                tvTeamMatchWinBy.setVisibility(View.VISIBLE);
+                tvTeamMatchWinBy.setText(getResources().getString(R.string.match_win_by) + " " + teamOneName);
+            } else if (Integer.valueOf(mTeamOneRun) < Integer.valueOf(mTeamTwoRun)) {
+                llWinByRunsWickets.setVisibility(View.VISIBLE);
+                tvTeamMatchWinBy.setVisibility(View.VISIBLE);
+                tvTeamMatchWinBy.setText(getResources().getString(R.string.match_win_by) + " " + teamTwoName);
+            } else if (Integer.valueOf(mTeamOneRun) == Integer.valueOf(mTeamTwoRun)) {
+                llWinByRunsWickets.setVisibility(View.GONE);
+                tvTeamMatchWinBy.setVisibility(View.VISIBLE);
+                tvTeamMatchWinBy.setText(getResources().getString(R.string.match_tied_between) + " " + teamOneName + " & " + teamTwoName);
+            }
+        }
     }
 
     private void submitMatches() {
-        final MatchList matchList = new MatchList(matchNumber, teamOneName, teamOneRuns, teamOneWickets, teamTwoName, teamTwoRuns, teamTwoWickets, tossWinByTeam, matchWinByTeam, winByRunsWickets, manOfTheMatch);
+        final MatchList matchList = new MatchList(matchNumber, teamOneName, teamOneRuns, teamOneWickets, teamTwoName, teamTwoRuns, teamTwoWickets, tossWinByTeam, matchWinByTeam, winByRunsWickets, runsWicketsFrom, manOfTheMatch);
 
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -320,7 +391,7 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
             return false;
         } else if (TextUtils.isEmpty(matchWinByTeam)) {
             return false;
-        } else if (TextUtils.isEmpty(runsWickets)) {
+        } else if (TextUtils.isEmpty(runsWicketsFrom)) {
             return false;
         }
         return true;

@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,6 +46,7 @@ public class PoolsFragment extends BaseFragment {
     private ProgressBar pbMainProgress;
 
     Bundle bundle = new Bundle();
+    private AdView mAdView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +59,10 @@ public class PoolsFragment extends BaseFragment {
         llMainContainer = (LinearLayout) view.findViewById(R.id.fragment_pools_ll_main_container);
         rlPoolsNotGenerated = (RelativeLayout) view.findViewById(R.id.fragment_pools_rl_pools_not_ready);
         pbMainProgress = (ProgressBar) view.findViewById(R.id.fragment_pools_pb_main_progress);
+
+        mAdView = (AdView) view.findViewById(R.id.fragment_pools_ad_view);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         return view;
     }

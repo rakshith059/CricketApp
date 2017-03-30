@@ -1,171 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:orientation="vertical">
 
-    <RelativeLayout
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color2"
-        android:orientation="vertical">
-
-        <ProgressBar
-            android:id="@+id/fragment_pools_pb_main_progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true" />
-
-        <LinearLayout
-            android:id="@+id/fragment_pools_ll_main_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="visible">
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/size_10dp"
-                android:backgroundTint="@color/white"
-                android:elevation="@dimen/size_10dp"
-                app:cardCornerRadius="@dimen/size_5dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/matches_poll_item_ll_background_poll_a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:background="@color/purple_1"
-                        android:minHeight="@dimen/size_100dp"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/matches_poll_item_ll_poll_teams_poll_a"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/matches_poll_item_ll_background_poll_a"
-                        android:layout_marginTop="-40dp"
-                        android:orientation="vertical">
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/fragment_pools_rv_poll_a"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/matches_poll_item_tv_poll_a_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/size_10dp"
-                        android:gravity="center"
-                        android:padding="@dimen/size_5dp"
-                        android:text="@string/pollA"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/size_20sp"
-                        android:textStyle="bold" />
-
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/size_10dp"
-                android:backgroundTint="@color/white"
-                android:elevation="@dimen/size_10dp"
-                app:cardCornerRadius="@dimen/size_5dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/matches_poll_item_ll_background_poll_b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:background="@color/purple"
-                        android:minHeight="@dimen/size_100dp"
-                        android:orientation="vertical">
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/matches_poll_item_ll_poll_teams_poll_b"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/matches_poll_item_ll_background_poll_b"
-                        android:layout_marginTop="-40dp"
-                        android:orientation="vertical">
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/fragment_pools_rv_poll_b"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/matches_poll_item_tv_poll_b_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/size_10dp"
-                        android:gravity="center"
-                        android:padding="@dimen/size_5dp"
-                        android:text="@string/pollB"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/size_20sp"
-                        android:textStyle="bold" />
-
-
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <RelativeLayout
-            android:id="@+id/fragment_pools_rl_pools_not_ready"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:background="@color/color2"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView2"
+            <ProgressBar
+                android:id="@+id/fragment_pools_pb_main_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true" />
+
+            <LinearLayout
+                android:id="@+id/fragment_pools_ll_main_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/size_10dp"
+                    android:backgroundTint="@color/white"
+                    android:elevation="@dimen/size_10dp"
+                    app:cardCornerRadius="@dimen/size_5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/matches_poll_item_ll_background_poll_a"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:background="@color/purple_1"
+                            android:minHeight="@dimen/size_100dp"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/matches_poll_item_ll_poll_teams_poll_a"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/matches_poll_item_ll_background_poll_a"
+                            android:layout_marginTop="-40dp"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/fragment_pools_rv_poll_a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/matches_poll_item_tv_poll_a_text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/size_10dp"
+                            android:gravity="center"
+                            android:padding="@dimen/size_5dp"
+                            android:text="@string/pollA"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_20sp"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/size_10dp"
+                    android:backgroundTint="@color/white"
+                    android:elevation="@dimen/size_10dp"
+                    app:cardCornerRadius="@dimen/size_5dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/matches_poll_item_ll_background_poll_b"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:background="@color/purple"
+                            android:minHeight="@dimen/size_100dp"
+                            android:orientation="vertical">
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/matches_poll_item_ll_poll_teams_poll_b"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_below="@+id/matches_poll_item_ll_background_poll_b"
+                            android:layout_marginTop="-40dp"
+                            android:orientation="vertical">
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/fragment_pools_rv_poll_b"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/matches_poll_item_tv_poll_b_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/size_10dp"
+                            android:gravity="center"
+                            android:padding="@dimen/size_5dp"
+                            android:text="@string/pollB"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/size_20sp"
+                            android:textStyle="bold" />
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/fragment_pools_rl_pools_not_ready"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_weight="1"
-                android:background="@color/semi_transparent"
-                android:gravity="center"
-                android:text="@string/pools_not_generated"
-                android:textColor="@color/white"
-                android:textSize="@dimen/size_20sp" />
+                android:orientation="vertical"
+                android:visibility="gone">
 
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="1"
+                    android:background="@color/semi_transparent"
+                    android:gravity="center"
+                    android:text="@string/pools_not_generated"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_20sp" />
+
+            </RelativeLayout>
         </RelativeLayout>
-    </RelativeLayout>
-</ScrollView>
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/fragment_pools_ad_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-5959977289534649/3162553610" />
+</LinearLayout>

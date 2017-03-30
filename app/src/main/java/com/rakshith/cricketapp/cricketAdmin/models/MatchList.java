@@ -17,12 +17,13 @@ public class MatchList implements Parcelable {
     private String tossWinByTeam;
     private String matchWinByTeam;
     private String winByRunsWickets;
+    private String runsWickets;
     private String manOfTheMatch;
 
     public MatchList() {
     }
 
-    public MatchList(String matchNumber, String teamOneName, String teamOneRuns, String teamOneWickets, String teamTwoName, String teamTwoRuns, String teamTwoWickets, String tossWinByTeam, String matchWinByTeam, String winByRunsWickets, String manOfTheMatch) {
+    public MatchList(String matchNumber, String teamOneName, String teamOneRuns, String teamOneWickets, String teamTwoName, String teamTwoRuns, String teamTwoWickets, String tossWinByTeam, String matchWinByTeam, String winByRunsWickets, String runsWickets, String manOfTheMatch) {
         this.setMatchNumber(matchNumber);
         this.teamOneName = teamOneName;
         this.teamOneRuns = teamOneRuns;
@@ -33,6 +34,7 @@ public class MatchList implements Parcelable {
         this.tossWinByTeam = tossWinByTeam;
         this.matchWinByTeam = matchWinByTeam;
         this.setWinByRunsWickets(winByRunsWickets);
+        this.setRunsWickets(runsWickets);
         this.manOfTheMatch = manOfTheMatch;
     }
 
@@ -47,6 +49,7 @@ public class MatchList implements Parcelable {
         tossWinByTeam = in.readString();
         matchWinByTeam = in.readString();
         setWinByRunsWickets(in.readString());
+        setRunsWickets(in.readString());
         manOfTheMatch = in.readString();
     }
 
@@ -151,6 +154,7 @@ public class MatchList implements Parcelable {
         dest.writeString(tossWinByTeam);
         dest.writeString(matchWinByTeam);
         dest.writeString(getWinByRunsWickets());
+        dest.writeString(getRunsWickets());
         dest.writeString(manOfTheMatch);
     }
 
@@ -168,5 +172,13 @@ public class MatchList implements Parcelable {
 
     public void setWinByRunsWickets(String winByRunsWickets) {
         this.winByRunsWickets = winByRunsWickets;
+    }
+
+    public String getRunsWickets() {
+        return runsWickets;
+    }
+
+    public void setRunsWickets(String runsWickets) {
+        this.runsWickets = runsWickets;
     }
 }

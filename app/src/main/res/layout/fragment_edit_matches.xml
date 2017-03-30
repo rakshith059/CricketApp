@@ -163,42 +163,51 @@
                 android:padding="@dimen/size_5dp">
 
                 <TextView
+                    android:id="@+id/fragment_edit_matches_tv_match_win_by"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/size_10dp"
                     android:text="@string/match_win_by"
                     android:textColor="@color/white"
                     android:textSize="@dimen/size_16sp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    android:visibility="gone" />
 
-                <Spinner
-                    android:id="@+id/fragment_enter_matches_sp_team_match_win"
-                    android:layout_width="@dimen/size_150dp"
+                <!--<Spinner-->
+                <!--android:id="@+id/fragment_enter_matches_sp_team_match_win"-->
+                <!--android:layout_width="@dimen/size_150dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:prompt="@string/hint_team_name" />-->
+                <LinearLayout
+                    android:id="@+id/fragment_edit_matches_ll_runs_wickets"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:prompt="@string/hint_team_name" />
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/fragment_enter_matches_til_runs_wickets"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/fragment_enter_matches_til_runs_wickets"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
 
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/fragment_enter_matches_et_runs_wickets"
-                        android:layout_width="@dimen/size_50dp"
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/fragment_enter_matches_et_runs_wickets"
+                            android:layout_width="@dimen/size_50dp"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/hint_runs_wickets"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/white" />
+
+                    </android.support.design.widget.TextInputLayout>
+
+                    <Spinner
+                        android:id="@+id/fragment_enter_matches_sp_runs_wickets"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hint_runs_wickets"
-                        android:inputType="numberDecimal"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <Spinner
-                    android:id="@+id/fragment_enter_matches_sp_runs_wickets"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:prompt="@string/hint_team_name" />
-
+                        android:prompt="@string/hint_team_name" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
