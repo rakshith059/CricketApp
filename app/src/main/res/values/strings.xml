@@ -167,6 +167,9 @@
     <string name="title_activity_dummy">DummyActivity</string>
     <string name="team_size">team_size</string>
     <string name="match_tied_between">Match tied between</string>
+    <string name="display_matches">Display matches</string>
+    <string name="man_of_the_match">Man Of the Match :</string>
+    <string name="mom_yet_to_announce">Man Of the Match not yet announced!!</string>
 
 
 </resources>

@@ -30,25 +30,15 @@
                 android:textSize="@dimen/size_16sp"
                 android:textStyle="bold" />
 
-            <android.support.v7.widget.CardView
-                android:layout_width="@dimen/size_40dp"
-                android:layout_height="@dimen/size_40dp"
+            <ImageView
+                android:id="@+id/matches_row_item_iv_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_margin="@dimen/size_3dp"
-                android:backgroundTint="@color/colorPrimary"
-                android:elevation="@dimen/size_5dp"
+                android:layout_centerVertical="true"
+                android:layout_margin="@dimen/size_10dp"
                 android:visibility="gone"
-                app:cardCornerRadius="@dimen/size_10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="i"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/size_20sp"
-                    android:textStyle="italic|bold" />
-            </android.support.v7.widget.CardView>
+                app:srcCompat="@drawable/ic_view" />
 
         </RelativeLayout>
 
@@ -63,35 +53,75 @@
                 android:layout_margin="@dimen/size_3dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/matches_row_item_tv_team_one"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_100dp"
                     android:layout_weight="1"
                     android:background="@color/purple_1"
                     android:gravity="center"
-                    android:text="@string/accept"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/size_16sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/matches_row_item_tv_team_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/size_10dp"
+                        android:text="@string/accept"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/matches_row_item_tv_team_one_score"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/size_10dp"
+                        android:text="@string/accept"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_16sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </LinearLayout>
 
                 <ImageView
                     android:layout_width="@dimen/size_50dp"
                     android:layout_height="match_parent"
                     app:srcCompat="@drawable/ic_verses" />
 
-                <TextView
-                    android:id="@+id/matches_row_item_tv_team_two"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_100dp"
                     android:layout_weight="1"
                     android:background="@color/purple"
                     android:gravity="center"
-                    android:text="@string/accept"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/size_16sp"
-                    android:textStyle="bold" />
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/matches_row_item_tv_team_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/size_10dp"
+                        android:text="@string/accept"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/matches_row_item_tv_team_two_score"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="@dimen/size_10dp"
+                        android:text="@string/accept"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_16sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                </LinearLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>

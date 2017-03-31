@@ -40,7 +40,7 @@
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
         android:src="@android:drawable/ic_input_add"
-        android:visibility="visible"
+        android:visibility="gone"
         app:backgroundTint="@color/white" />
 
 </android.support.design.widget.CoordinatorLayout>

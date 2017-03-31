@@ -69,10 +69,12 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
                 roleImageId = R.drawable.ic_wicket_keeper;
             else roleImageId = R.drawable.ic_rx1_logo;
 
-            Glide.with(mActivity)
-                    .load(roleImageId)
-                    .placeholder(R.drawable.ic_rx1_logo)
-                    .into(holder.ivPlayerRole);
+            holder.ivPlayerRole.setImageResource(roleImageId);
+
+//            Glide.with(mActivity)
+//                    .load(roleImageId)
+//                    .placeholder(R.drawable.ic_rx1_logo)
+//                    .into(holder.ivPlayerRole);
         }
 
         Constants constants = new Constants();
