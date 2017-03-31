@@ -22,19 +22,19 @@
     <!--android:textStyle="bold" />-->
 
     <!--<TextView-->
-        <!--android:id="@+id/fragment_teams_info_tv_create_pools"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="right|center"-->
-        <!--android:layout_margin="@dimen/size_10dp"-->
-        <!--android:background="@drawable/gradient_bg"-->
-        <!--android:gravity="right"-->
-        <!--android:padding="@dimen/size_10dp"-->
-        <!--android:text="@string/create_polls"-->
-        <!--android:textAllCaps="true"-->
-        <!--android:textColor="@color/white"-->
-        <!--android:textStyle="bold"-->
-        <!--android:visibility="gone" />-->
+    <!--android:id="@+id/fragment_teams_info_tv_create_pools"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="right|center"-->
+    <!--android:layout_margin="@dimen/size_10dp"-->
+    <!--android:background="@drawable/gradient_bg"-->
+    <!--android:gravity="right"-->
+    <!--android:padding="@dimen/size_10dp"-->
+    <!--android:text="@string/create_polls"-->
+    <!--android:textAllCaps="true"-->
+    <!--android:textColor="@color/white"-->
+    <!--android:textStyle="bold"-->
+    <!--android:visibility="gone" />-->
 
     <include
         layout="@layout/common_recycler_view"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_menu_rotate"
+        app:srcCompat="@drawable/ic_shufle"
         android:visibility="gone"
         app:backgroundTint="@color/white" />
 

@@ -54,7 +54,10 @@
     ** 1 wicket = 3 runs</string>
     <string name="rules_for_valuable_player_text">Rules for Team value</string>
 
-    <string name="banner_home_footer">ca-app-pub-5959977289534649/8672264813</string>
+    <string name="banner_home_footer1">ca-app-pub-5959977289534649/8672264813</string>
+    <!--<string name="banner_home_footer2">ca-app-pub-5959977289534649/3162553610</string>-->
+    <string name="banner_home_footer2">ca-app-pub-5959977289534649/4159778818</string>
+
     <string name="native_ad_home_screen">ca-app-pub-5959977289534649/7695059211</string>
     <string name="rules_text">Rules</string>
     <string name="rules_for_game">\t 1.Entrance Fee: INR 1500/- \n

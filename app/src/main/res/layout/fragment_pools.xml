@@ -182,5 +182,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-5959977289534649/3162553610" />
+        ads:adUnitId="@string/banner_home_footer2" />
 </LinearLayout>

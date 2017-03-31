@@ -225,8 +225,6 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
         displayTossWinLayout();
 
         ArrayList<String> runsWickets = new ArrayList<>();
-        runsWickets.add(Constants.RUN);
-        runsWickets.add(Constants.WICKET);
         runsWickets.add(Constants.RUNS);
         runsWickets.add(Constants.WICKETS);
 

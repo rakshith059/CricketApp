@@ -40,7 +40,6 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 finish();
-                Toast.makeText(SplashActivity.this, "Entering Main Activity ", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
                 startActivity(intent);
             }

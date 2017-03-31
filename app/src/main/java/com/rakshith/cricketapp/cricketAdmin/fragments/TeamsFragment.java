@@ -88,6 +88,18 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
         return view;
     }
 
+    @Override
+    public void onPause() {
+        mAdView.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        mAdView.resume();
+        super.onResume();
+    }
+
     private void displayHideLayoutAfterReachingMaxTeam(int teamSize) {
         if (teams != null && teams.size() > 0) {
             if (teams.size() == teamSize) {
@@ -211,9 +223,6 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.fragment_teams_info_tv_add_teams:
-//                ((HomeActivity) getActivity()).replaceFragment(new AddNewTeamFragment(), getResources().getString(R.string.add_new_teams), null);
-//                break;
             case R.id.fragment_teams_info_fab_add_teams:
                 ((HomeActivity) getActivity()).replaceFragment(new AddNewTeamFragment(), getResources().getString(R.string.add_new_teams), null);
                 break;

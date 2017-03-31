@@ -60,11 +60,11 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
         }
         if (!TextUtils.isEmpty(playerRole)) {
             if (playerRole.equalsIgnoreCase(Constants.ROLE_BATSMEN))
-                roleImageId = R.drawable.ic_batsman;
+                roleImageId = R.drawable.ic_batsmen;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_BOWLER))
-                roleImageId = R.drawable.ic_bowler;
+                roleImageId = R.drawable.ic_batsmen;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_ALL_ROUNDER))
-                roleImageId = R.drawable.ic_all_rounder;
+                roleImageId = R.drawable.ic_batsmen;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_KEEPER))
                 roleImageId = R.drawable.ic_wicket_keeper;
             else roleImageId = R.drawable.ic_rx1_logo;

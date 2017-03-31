@@ -81,6 +81,18 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
         }
     }
 
+    @Override
+    public void onPause() {
+        mAdView.pause();
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        mAdView.resume();
+        super.onResume();
+    }
+
     private void getMatches() {
         progressBar.setVisibility(View.VISIBLE);
         databaseReference.child(Constants.DB_MATCHES).addValueEventListener(new ValueEventListener() {

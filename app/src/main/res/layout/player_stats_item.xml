@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:background="@color/white"
     android:elevation="1dp"
     android:orientation="horizontal"
     android:padding="@dimen/size_5dp">
@@ -15,7 +15,7 @@
         android:padding="3dp"
         android:text="@string/player_name"
         android:textAllCaps="true"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/size_16sp"
         android:textStyle="bold" />
 
@@ -30,7 +30,7 @@
         android:paddingRight="@dimen/size_5dp"
         android:paddingTop="3dp"
         android:text="@string/mts"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/size_16sp"
         android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
         android:paddingRight="@dimen/size_5dp"
         android:paddingTop="3dp"
         android:text="@string/balls_faced"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/size_16sp"
         android:textStyle="bold" />
 
@@ -60,7 +60,7 @@
         android:paddingRight="@dimen/size_5dp"
         android:paddingTop="3dp"
         android:text="@string/runs"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/size_16sp"
         android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
         android:paddingRight="@dimen/size_5dp"
         android:paddingTop="3dp"
         android:text="@string/fours"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="@dimen/size_16sp"
         android:textStyle="bold" />
 

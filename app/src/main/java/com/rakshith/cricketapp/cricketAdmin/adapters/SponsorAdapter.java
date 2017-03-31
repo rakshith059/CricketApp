@@ -64,6 +64,23 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.SponsorV
                 holder.ivSponsorImage.setImageBitmap(bitmap);
             }
         });
+
+        final boolean[] isTextViewClicked = {false};
+
+        holder.tvSponsorDetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isTextViewClicked[0]) {
+                    //This will shrink textview to 2 lines if it is expanded.
+                    holder.tvSponsorDetail.setMaxLines(4);
+                    isTextViewClicked[0] = false;
+                } else {
+                    //This will expand the textview if it is of 2 lines
+                    holder.tvSponsorDetail.setMaxLines(Integer.MAX_VALUE);
+                    isTextViewClicked[0] = true;
+                }
+            }
+        });
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rakshith.cricketapp.R;
@@ -54,6 +55,12 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
         int runOuts = memberStats.getiRunouts();
         int stumps = memberStats.getiStumps();
 
+        if (position == 0) {
+            holder.ivPlayerFirst.setVisibility(View.VISIBLE);
+        } else {
+            holder.ivPlayerFirst.setVisibility(View.GONE);
+        }
+
         if (!TextUtils.isEmpty(playerName)) {
             holder.tvPlayerName.setText(playerName);
             holder.tvTeamName.setText(memberStats.getmTeamName());
@@ -99,6 +106,7 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
     }
 
     public class PlayerStatViewHolder extends RecyclerView.ViewHolder {
+        ImageView ivPlayerFirst;
         CardView cvMainContainer;
         TextView tvPlayerName;
         TextView tvTeamName;
@@ -112,6 +120,7 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 
             cvMainContainer = (CardView) view.findViewById(R.id.player_stats_item_row_cv_main_container);
             tvPlayerName = (TextView) view.findViewById(R.id.player_stats_item_row_tv_player_name);
+            ivPlayerFirst = (ImageView) view.findViewById(R.id.player_stats_row_iv_first);
             tvTeamName = (TextView) view.findViewById(R.id.player_stats_item_row_tv_team_name);
             tvMatchesPlayed = (TextView) view.findViewById(R.id.player_stats_item_row_tv_matches);
             tvBallsOverCatches = (TextView) view.findViewById(R.id.player_stats_item_row_tv_balls_faced);

@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/ic_batsman" />
+                app:srcCompat="@drawable/ic_developer" />
 
         </android.support.v7.widget.CardView>
 
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="8"
+                android:maxLines="4"
                 android:padding="@dimen/size_5dp"
                 android:text="@string/add_new_teams"
                 android:textColor="@color/black"
