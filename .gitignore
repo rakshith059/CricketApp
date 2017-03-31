@@ -1,8 +1,12 @@
-*.iml
+/libraries
 .gradle
 /local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
 /build
-/captures
+.idea
+*.iml
+**/build
+/*/.idea/workspace.xml
+.gitignore
+.idea/misc.xml
+app/src/main/res/drawable-v21/
