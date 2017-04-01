@@ -226,8 +226,13 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_SHARE);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 
-            Intent intent = new Intent(this, MapActivity.class);
-            startActivity(intent);
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT,
+//                    "Hey check out my app at: https://play.google.com/store/apps/details?id=com.rakshith.cricketapp&hl=en");
+                    "Hey check out " + getResources().getString(R.string.app_name) + " at: https://ftt6d.app.goo.gl/NLtk");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
         } else if (id == R.id.nav_login) {
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_LOGIN);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
