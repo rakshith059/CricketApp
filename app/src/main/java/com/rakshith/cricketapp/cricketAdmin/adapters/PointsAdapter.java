@@ -1,6 +1,8 @@
 package com.rakshith.cricketapp.cricketAdmin.adapters;
 
 import android.app.Activity;
+import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -9,11 +11,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.rakshith.cricketapp.R;
+import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
+import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
+import com.rakshith.cricketapp.cricketAdmin.fragments.TeamsStandingDetailFragment;
+import com.rakshith.cricketapp.cricketAdmin.fragments.TeamsStandingFragment;
 import com.rakshith.cricketapp.cricketAdmin.models.TeamScore;
 
 import java.util.List;
 
-public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHolder> {
+public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHolder> implements View.OnClickListener {
     Activity mActivity;
     List<TeamScore> pointsList;
 
@@ -52,6 +58,9 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
         holder.tvWins.setText(String.valueOf(matchesWin));
         holder.tvLoss.setText(String.valueOf(matchesLost));
         holder.tvPoints.setText(String.valueOf(points));
+
+        holder.cvMainContainer.setTag(teamScore);
+        holder.cvMainContainer.setOnClickListener(this);
     }
 
     @Override
@@ -59,7 +68,22 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
         return pointsList.size();
     }
 
+    @Override
+    public void onClick(View v) {
+        TeamScore teamScoreDetail = (TeamScore) v.getTag();
+        switch (v.getId()) {
+            case R.id.player_stats_item_row_cv_main_container:
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(Constants.TEAM_DETAIL, teamScoreDetail);
+                ((HomeActivity) mActivity).replaceFragment(new TeamsStandingDetailFragment(), mActivity.getResources().getString(R.string.team_standing_detail), bundle);
+                break;
+            default:
+                break;
+        }
+    }
+
     class PointsHolder extends RecyclerView.ViewHolder {
+        CardView cvMainContainer;
         TextView tvTeamName;
         TextView tvCityName;
         TextView tvPlayedMatches;
@@ -70,6 +94,7 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
         public PointsHolder(View itemView) {
             super(itemView);
 
+            cvMainContainer = (CardView) itemView.findViewById(R.id.player_stats_item_row_cv_main_container);
             tvTeamName = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_player_name);
             tvCityName = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_team_name);
             tvPlayedMatches = (TextView) itemView.findViewById(R.id.player_stats_item_row_tv_matches);

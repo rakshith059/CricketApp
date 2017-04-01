@@ -24,12 +24,12 @@
 
             <ImageView
                 android:id="@+id/player_stats_row_iv_first"
-                android:layout_width="@dimen/size_15dp"
-                android:layout_height="@dimen/size_15dp"
+                android:layout_width="@dimen/size_30dp"
+                android:layout_height="@dimen/size_30dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/size_5dp"
-                android:src="@android:drawable/presence_online"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:srcCompat="@drawable/ic_badge" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,7 +43,7 @@
                     android:text="@string/player_name"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/size_16sp"
+                    android:textSize="@dimen/size_14sp"
                     android:textStyle="bold" />
 
                 <TextView

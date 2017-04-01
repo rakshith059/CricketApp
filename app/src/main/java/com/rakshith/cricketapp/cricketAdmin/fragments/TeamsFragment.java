@@ -132,7 +132,10 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
         rvTeamsList.addItemDecoration(new RecyclerItemDecorator(10));
         rvTeamsList.setLayoutManager(linearLayoutManager);
         getTeamsListIfInternetAvailable();
-
+        if (!TextUtils.isEmpty(isUserLoggedIn) && !isUserLoggedIn.equalsIgnoreCase(Constants.FALSE)) {
+            fabAddTeam.setVisibility(View.GONE);
+            fabCreatePool.setVisibility(View.GONE);
+        }
         fabCreatePool.setOnClickListener(this);
         fabAddTeam.setOnClickListener(this);
     }

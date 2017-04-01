@@ -11,10 +11,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
+import com.facebook.login.LoginFragment;
 import com.google.android.gms.appinvite.AppInvite;
 import com.google.android.gms.appinvite.AppInviteInvitationResult;
 import com.google.android.gms.appinvite.AppInviteReferral;
@@ -25,6 +28,7 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.rakshith.cricketapp.cricketAdmin.fragments.AboutUsFragment;
+import com.rakshith.cricketapp.cricketAdmin.fragments.AdminLoginFragment;
 import com.rakshith.cricketapp.cricketAdmin.fragments.RulesFragment;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
@@ -45,6 +49,8 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
 
     FirebaseAnalytics firebaseAnalytics;
 
+    String isUserLoggedIn;
+
     private StorageReference mStorageRef;
 //    ViewPager vpPager;
 //    ViewPagerAdapter viewPagerAdapter;
@@ -55,6 +61,7 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         setContentView(R.layout.activity_home);
 
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        isUserLoggedIn = Constants.getSharedPrefrenceString(this, Constants.IS_USER_LOGGED_IN);
 
 //        toolbar = (Toolbar) findViewById(R.id.activity_home_detail_toolbar);
 //        setSupportActionBar(toolbar);
@@ -112,6 +119,14 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         addFragment(new HomeFragment(), null);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if (!TextUtils.isEmpty(isUserLoggedIn) && isUserLoggedIn.equalsIgnoreCase(Constants.TRUE)) {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.navigation_with_logout);
+        } else {
+            navigationView.getMenu().clear();
+            navigationView.inflateMenu(R.menu.navigation_with_login);
+        }
+
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -189,18 +204,16 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_HOME);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_rules) {
-            replaceFragment(new RulesFragment(), "rulesFragment", null);
+            replaceFragment(new RulesFragment(), null, null);
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_RULES);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_sponsors) {
-            // TODO: 3/27/17 create sponsor fragment
-            replaceFragment(new SponserFragment(), "sponsorScreen", null);
+            replaceFragment(new SponserFragment(), null, null);
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_SPONSERS);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 //            replaceFragment(new StatsFragment(), "statsFragment", null);
         } else if (id == R.id.nav_about_us) {
-            // TODO: 3/27/17 create about us fragment
-            replaceFragment(new AboutUsFragment(), "aboutUsFragment", null);
+            replaceFragment(new AboutUsFragment(), null, null);
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_ABOUT_US);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_location) {
@@ -208,6 +221,25 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 
             Intent intent = new Intent(this, MapActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_share) {
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_SHARE);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+
+            Intent intent = new Intent(this, MapActivity.class);
+            startActivity(intent);
+        } else if (id == R.id.nav_login) {
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_LOGIN);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+
+            replaceFragment(new AdminLoginFragment(), null, null);
+        } else if (id == R.id.nav_logout) {
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_LOGOUT);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+
+            Constants.setSharedPrefrence(mContext, Constants.IS_USER_LOGGED_IN, Constants.FALSE);
+            Intent intent = new Intent(this, HomeActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
         }
 
@@ -219,5 +251,15 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
     public void fireBaseAnalyticsEvents(String eventName, Bundle bundle) {
         if (bundle != null)
             firebaseAnalytics.logEvent(eventName, bundle);
+    }
+
+    /**
+     * Hides the soft keyboard
+     */
+    public void hideSoftKeyboard() {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
     }
 }

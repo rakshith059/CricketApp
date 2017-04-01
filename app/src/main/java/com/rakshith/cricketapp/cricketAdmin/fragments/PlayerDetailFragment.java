@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
+import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
 import com.rakshith.cricketapp.cricketAdmin.models.MemberStats;
 
 /**
@@ -32,6 +33,7 @@ public class PlayerDetailFragment extends BaseFragment {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     MemberStats memberDetail;
+    private Bundle analyticsBundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +46,10 @@ public class PlayerDetailFragment extends BaseFragment {
         if (bundle != null) {
             memberDetail = bundle.getParcelable(Constants.PLAYER_DETAIL);
         }
+
+        analyticsBundle = new Bundle();
+        analyticsBundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_PLAYER_DETAIL);
+        ((HomeActivity) mActivity).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 
         tvBattingMatchesPlayed = (TextView) view.findViewById(R.id.fragment_player_detail_tv_batting_matches_played);
         tvBallsFaced = (TextView) view.findViewById(R.id.fragment_player_detail_tv_balls_faced);

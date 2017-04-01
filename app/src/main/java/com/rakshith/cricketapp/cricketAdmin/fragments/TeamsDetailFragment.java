@@ -62,6 +62,11 @@ public class TeamsDetailFragment extends BaseFragment implements View.OnClickLis
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvPlayersList.setLayoutManager(linearLayoutManager);
 
+        if (!TextUtils.isEmpty(isUserLoggedIn) && isUserLoggedIn.equalsIgnoreCase(Constants.TRUE)) {
+            tvEditTeamScore.setVisibility(View.VISIBLE);
+        } else
+            tvEditTeamScore.setVisibility(View.GONE);
+
         tvEditTeamScore.setOnClickListener(this);
         return view;
     }

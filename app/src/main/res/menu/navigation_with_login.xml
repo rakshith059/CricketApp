@@ -22,6 +22,10 @@
             android:id="@+id/nav_location"
             android:icon="@drawable/ic_location"
             android:title="Location" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@android:drawable/ic_menu_share"
+            android:title="Share" />
     </group>
 
     <group
@@ -29,7 +33,7 @@
         android:checkableBehavior="none">
         <item
             android:id="@+id/nav_login"
-            android:icon="@drawable/ic_developer"
+            android:icon="@drawable/ic_about_us"
             android:title="@string/login" />
     </group>
 

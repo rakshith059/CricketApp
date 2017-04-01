@@ -170,6 +170,20 @@
     <string name="display_matches">Display matches</string>
     <string name="man_of_the_match">Man Of the Match :</string>
     <string name="mom_yet_to_announce">Man Of the Match not yet announced!!</string>
+    <string name="login">Login</string>
+    <string name="hint_username">Enter User name</string>
+    <string name="hint_password">Enter password</string>
+    <string name="hint_email_password_mismatch">Email-id and pasword mismatch</string>
+    <string name="logout">Logout</string>
+    <string name="team_standing_detail">team standing detail screen</string>
+    <string name="total_matches_won">Matches win :</string>
+    <string name="total_matches_played">Matches played :</string>
+    <string name="total_matches_lost">matches lost :</string>
+    <string name="total_runs_scored">Total Runs Scored</string>
+    <string name="total_runs_gave">Total runs gave</string>
+    <string name="total_wickets_lost">Total wickets lost</string>
+    <string name="total_wickets_took">Total wickets took</string>
+    <string name="total_team_value">Total team value</string>
 
 
 </resources>

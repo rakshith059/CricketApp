@@ -241,7 +241,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
         wicketsTook = previousWicketsTook + wicketsTook;
 //        totalPoints = previousPoints + totalPoints;
 
-        TeamScore teamScore = new TeamScore(teamName,cityName, matchesPlayed, wins, lost, scoreFor, wicketsLost, scoreAgainst,
+        TeamScore teamScore = new TeamScore(teamName, cityName, matchesPlayed, wins, lost, scoreFor, wicketsLost, scoreAgainst,
                 wicketsTook, totalPoints);
         databaseReference.child(Constants.DB_TEAMS_SCORE).child(teamName).setValue(teamScore);
 

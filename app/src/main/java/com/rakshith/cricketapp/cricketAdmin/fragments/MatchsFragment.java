@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -120,8 +121,12 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        fabEnterMatches.setOnClickListener(this);
+        if (!TextUtils.isEmpty(isUserLoggedIn))
+            if (isUserLoggedIn.equalsIgnoreCase(Constants.TRUE)) {
+                fabEnterMatches.setOnClickListener(this);
+                fabEnterMatches.setVisibility(View.VISIBLE);
+            } else
+                fabEnterMatches.setVisibility(View.GONE);
     }
 
     @Override

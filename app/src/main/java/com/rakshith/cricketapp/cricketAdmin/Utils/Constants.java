@@ -1,5 +1,8 @@
 package com.rakshith.cricketapp.cricketAdmin.Utils;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -65,6 +68,7 @@ public class Constants {
     public static final String CITY_NAME = "city_name";
     public static String DRAW = "draw";
 
+    public static final String IS_USER_LOGGED_IN = "isUserLoggedIn";
 
     /**
      * Constants for firebase analytics
@@ -102,9 +106,16 @@ public class Constants {
     public static String PARAM_SCREEN_NAME_LOCATION = "screen_name_locations";
     public static String PARAM_SCREEN_NAME_SPONSERS = "screen_name_sponsers";
     public static String PARAM_SCREEN_NAME_ABOUT_US = "screen_name_about_us";
+    public static final String PARAM_SCREEN_NAME_LOGIN = "screen_name_login";
+    public static final String PARAM_SCREEN_NAME_LOGOUT = "screen_name_logout";
+    public static final String PARAM_SCREEN_NAME_SHARE = "screen_name_share";
+    public static final String PARAM_SCREEN_NAME_TEAM_STANDING_DETAIL = "screen_team_standing_detail";
 
     public static String EVENT_VIEW = "event_view";
     public static String EVENT_CLICKED = "event_clicked";
+    public static String TRUE = "true";
+    public static final String FALSE = "false";
+    public static int RUNS_FOR_WICKET = 3;
 
     public void setFadeAnimation(View view) {
         AlphaAnimation anim = new AlphaAnimation(0.0f, 1.0f);
@@ -116,5 +127,19 @@ public class Constants {
         ScaleAnimation anim = new ScaleAnimation(0.0f, 1.0f, 0.0f, 1.0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         anim.setDuration(Animation.ABSOLUTE);
         view.startAnimation(anim);
+    }
+
+    public static void setSharedPrefrence(Context context, String key, String value) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences
+                (context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+
+    public static String getSharedPrefrenceString(Context context, String key) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences
+                (context);
+        return sharedPreferences.getString(key, "");
     }
 }

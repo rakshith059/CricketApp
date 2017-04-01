@@ -30,12 +30,14 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
     private ArrayList<MatchList> matchesList;
 
     Bundle analyticsBundle;
+    String isUserLoggedIn;
 
     public MatchesAdapter(Activity mActivity, ArrayList<MatchList> matchesList) {
         this.mActivity = mActivity;
         this.matchesList = matchesList;
 
         analyticsBundle = new Bundle();
+        isUserLoggedIn = Constants.getSharedPrefrenceString(mActivity, Constants.IS_USER_LOGGED_IN);
     }
 
     @Override
@@ -58,13 +60,18 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
         if (!TextUtils.isEmpty(mTeamTwo))
             holder.tvTeamTwo.setText(mTeamTwo);
 
-        if (!TextUtils.isEmpty(matchList.getMatchWinByTeam()) || !TextUtils.isEmpty(matchList.getTeamOneRuns())
-                || !TextUtils.isEmpty(matchList.getTeamTwoRuns())) {
-            holder.ivMatchDetailView.setVisibility(View.VISIBLE);
+        if (!TextUtils.isEmpty(isUserLoggedIn) && isUserLoggedIn.equalsIgnoreCase(Constants.TRUE)) {
             holder.cvMainContainer.setTag(matchList);
             holder.cvMainContainer.setOnClickListener(this);
         } else {
-            holder.ivMatchDetailView.setVisibility(View.GONE);
+            if (!TextUtils.isEmpty(matchList.getMatchWinByTeam()) || !TextUtils.isEmpty(matchList.getTeamOneRuns())
+                    || !TextUtils.isEmpty(matchList.getTeamTwoRuns())) {
+                holder.ivMatchDetailView.setVisibility(View.VISIBLE);
+                holder.cvMainContainer.setTag(matchList);
+                holder.cvMainContainer.setOnClickListener(this);
+            } else {
+                holder.ivMatchDetailView.setVisibility(View.GONE);
+            }
         }
     }
 
@@ -83,9 +90,10 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
                 Bundle bundle = new Bundle();
                 if (matchList != null) {
                     bundle.putParcelable(Constants.MATCH_DETAIL, matchList);
-//                    ((HomeActivity) mActivity).replaceFragment(new EditMatchesFragment(), mActivity.getResources().getString(R.string.enter_matches), bundle);
-                    ((HomeActivity) mActivity).replaceFragment(new DisplayMatchesFragment(), mActivity.getResources().getString(R.string.display_matches), bundle);
-
+                    if (!TextUtils.isEmpty(isUserLoggedIn) && isUserLoggedIn.equalsIgnoreCase(Constants.TRUE)) {
+                        ((HomeActivity) mActivity).replaceFragment(new EditMatchesFragment(), mActivity.getResources().getString(R.string.enter_matches), bundle);
+                    } else
+                        ((HomeActivity) mActivity).replaceFragment(new DisplayMatchesFragment(), mActivity.getResources().getString(R.string.display_matches), bundle);
                     analyticsBundle.putString(Constants.MATCH_NUM, matchList.getMatchNumber());
                     ((HomeActivity) mActivity).fireBaseAnalyticsEvents(Constants.EVENT_CLICKED, bundle);
                 }

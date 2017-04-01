@@ -28,11 +28,14 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
     List<MemberItem> teamMemberList;
     private int roleImageId;
     String teamName;
+    private String isUserLoggedIn;
 
     public TeamMemberDetailAdapter(Activity mActivity, String teamName, List<MemberItem> teamMembers) {
         this.mActivity = mActivity;
         this.teamName = teamName;
         this.teamMemberList = teamMembers;
+
+        isUserLoggedIn = Constants.getSharedPrefrenceString(mActivity, Constants.IS_USER_LOGGED_IN);
     }
 
     @Override
@@ -62,9 +65,9 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
             if (playerRole.equalsIgnoreCase(Constants.ROLE_BATSMEN))
                 roleImageId = R.drawable.ic_batsmen;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_BOWLER))
-                roleImageId = R.drawable.ic_batsmen;
+                roleImageId = R.drawable.ic_bowler;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_ALL_ROUNDER))
-                roleImageId = R.drawable.ic_batsmen;
+                roleImageId = R.drawable.ic_all_rounder;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_KEEPER))
                 roleImageId = R.drawable.ic_wicket_keeper;
             else roleImageId = R.drawable.ic_rx1_logo;
@@ -80,8 +83,10 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
         Constants constants = new Constants();
         constants.setFadeAnimation(holder.itemView);
 
-        holder.llMainContainer.setOnClickListener(this);
-        holder.llMainContainer.setTag(playerName);
+        if (!TextUtils.isEmpty(isUserLoggedIn) && isUserLoggedIn.equalsIgnoreCase(Constants.TRUE)) {
+            holder.llMainContainer.setOnClickListener(this);
+            holder.llMainContainer.setTag(playerName);
+        }
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
+import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
 import com.rakshith.cricketapp.cricketAdmin.models.MatchList;
 
 /**
@@ -45,6 +46,7 @@ public class DisplayMatchesFragment extends BaseFragment {
     private String runsWicketsFrom;
     private String manOfTheMatch;
     private String matchNumber;
+    private Bundle analyticsBundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -57,6 +59,10 @@ public class DisplayMatchesFragment extends BaseFragment {
         if (bundle != null) {
             matchList = bundle.getParcelable(Constants.MATCH_DETAIL);
         }
+
+        analyticsBundle = new Bundle();
+        analyticsBundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_MATCH_DETAIL);
+        ((HomeActivity) mActivity).fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 
         tvMatchNo = (TextView) view.findViewById(R.id.matches_row_item_tv_match_number);
         tvTeamOneName = (TextView) view.findViewById(R.id.matches_row_item_tv_team_one);

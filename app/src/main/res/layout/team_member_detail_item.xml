@@ -27,19 +27,18 @@
             android:textSize="@dimen/size_20sp"
             android:textStyle="italic|bold" />
 
-        <android.support.v7.widget.CardView
-            android:layout_width="@dimen/size_40dp"
-            android:layout_height="@dimen/size_40dp"
-            android:backgroundTint="@color/white"
-            android:elevation="@dimen/size_10dp"
-            app:cardCornerRadius="@dimen/size_10dp">
+        <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_width="@dimen/size_40dp"-->
+        <!--android:layout_height="@dimen/size_40dp"-->
+        <!--android:backgroundTint="@color/white"-->
+        <!--android:elevation="@dimen/size_10dp"-->
+        <!--app:cardCornerRadius="@dimen/size_10dp">-->
 
-            <ImageView
-                android:id="@+id/team_member_detail_item_iv_role"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY" />
-        </android.support.v7.widget.CardView>
+        <ImageView
+            android:id="@+id/team_member_detail_item_iv_role"
+            android:layout_width="@dimen/size_40dp"
+            android:layout_height="@dimen/size_40dp" />
+        <!--</android.support.v7.widget.CardView>-->
 
     </LinearLayout>
 </android.support.v7.widget.CardView>
