@@ -29,6 +29,7 @@
                 android:layout_margin="@dimen/size_10dp"
                 android:clipToPadding="true"
                 android:elevation="@dimen/size_20dp"
+                android:visibility="gone"
                 app:cardCornerRadius="@dimen/size_10dp">
 
                 <ImageView
@@ -92,7 +93,6 @@
                     android:hint="@string/hint_captain_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name1"
                     android:textColor="@color/white" />
             </android.support.design.widget.TextInputLayout>
 
@@ -122,7 +122,6 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name2"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -153,7 +152,6 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name3"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -184,7 +182,6 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name4"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -215,7 +212,6 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name5"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -246,7 +242,6 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name6"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -277,7 +272,6 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name7"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -308,7 +302,6 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name8"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -339,7 +332,6 @@
                     android:hint="@string/hint_player_name"
                     android:inputType="textCapWords"
                     android:maxLength="50"
-                    android:text="name9"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -369,7 +361,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_city_name"
                     android:inputType="textCapCharacters"
-                    android:text="City"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -394,7 +385,6 @@
                     android:hint="@string/hint_contact_number"
                     android:inputType="numberDecimal"
                     android:maxLength="10"
-                    android:text="1111111111"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>
@@ -417,7 +407,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/hint_email_id"
                     android:inputType="textEmailAddress"
-                    android:text="email-id"
                     android:textColor="@color/white" />
 
             </android.support.design.widget.TextInputLayout>

@@ -1,6 +1,8 @@
 package com.rakshith.cricketapp.cricketAdmin.activities;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -204,16 +206,15 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_HOME);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_rules) {
-            replaceFragment(new RulesFragment(), null, null);
+            replaceFragment(new RulesFragment(), "rulesFragment", null);
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_RULES);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_sponsors) {
-            replaceFragment(new SponserFragment(), null, null);
+            replaceFragment(new SponserFragment(), "sponsorScreen", null);
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_SPONSERS);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
-//            replaceFragment(new StatsFragment(), "statsFragment", null);
         } else if (id == R.id.nav_about_us) {
-            replaceFragment(new AboutUsFragment(), null, null);
+            replaceFragment(new AboutUsFragment(), "aboutUsFragment", null);
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_ABOUT_US);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_location) {
@@ -226,18 +227,14 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_SHARE);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT,
-//                    "Hey check out my app at: https://play.google.com/store/apps/details?id=com.rakshith.cricketapp&hl=en");
-                    "Hey check out " + getResources().getString(R.string.app_name) + " at: https://ftt6d.app.goo.gl/NLtk");
-            sendIntent.setType("text/plain");
-            startActivity(sendIntent);
+            handleShareThisApp();
+        } else if (id == R.id.nav_rate_us) {
+            handleRateThisApp();
         } else if (id == R.id.nav_login) {
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_LOGIN);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
 
-            replaceFragment(new AdminLoginFragment(), null, null);
+            replaceFragment(new AdminLoginFragment(), "loginScreen", null);
         } else if (id == R.id.nav_logout) {
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_LOGOUT);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
@@ -251,6 +248,31 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void handleShareThisApp() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,
+                "Hey check out " + getResources().getString(R.string.app_name) + " at: https://ftt6d.app.goo.gl/NLtk");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
+    }
+
+    private void handleRateThisApp() {
+        Uri uri = Uri.parse("market://details?id=" + this.getPackageName());
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        // To count with Play market backstack, After pressing back button,
+        // to taken back to our application, we need to add following flags to intent.
+        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+        try {
+            startActivity(goToMarket);
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
+        }
     }
 
     public void fireBaseAnalyticsEvents(String eventName, Bundle bundle) {

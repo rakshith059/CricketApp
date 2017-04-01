@@ -25,7 +25,7 @@ public class AboutUsFragment extends BaseFragment {
     RecyclerAboutUsAdapter aboutUsAdapter;
     AdView mAdView;
 
-    List<String> aboutUsList = new ArrayList<>();
+    List<String> aboutUsList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class AboutUsFragment extends BaseFragment {
         mAdView = (AdView) view.findViewById(R.id.common_recycler_view_ad_view);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        
+
         return view;
     }
 
@@ -47,6 +47,7 @@ public class AboutUsFragment extends BaseFragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvRecyclerView.setLayoutManager(linearLayoutManager);
         rvRecyclerView.addItemDecoration(new RecyclerItemDecorator(5));
+        aboutUsList = new ArrayList<>();
         aboutUsList();
 
         Collections.sort(aboutUsList, String.CASE_INSENSITIVE_ORDER);
@@ -77,6 +78,6 @@ public class AboutUsFragment extends BaseFragment {
         aboutUsList.add("LINGA");
         aboutUsList.add("HARI");
         aboutUsList.add("GIRISH");
-        aboutUsList.add("ANJAN");
+        aboutUsList.add("MADHU");
     }
 }

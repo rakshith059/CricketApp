@@ -101,14 +101,19 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
     }
 
     private void displayHideLayoutAfterReachingMaxTeam(int teamSize) {
-        if (teams != null && teams.size() > 0) {
-            if (teams.size() == teamSize) {
-                fabAddTeam.setVisibility(View.GONE);
-                checkPoolsCreatedOrNot();
-            } else {
-                fabAddTeam.setVisibility(View.VISIBLE);
-                fabCreatePool.setVisibility(View.GONE);
+        if (!TextUtils.isEmpty(isUserLoggedIn) && isUserLoggedIn.equalsIgnoreCase(Constants.TRUE)) {
+            if (teams != null && teams.size() > 0) {
+                if (teams.size() == teamSize) {
+                    fabAddTeam.setVisibility(View.GONE);
+                    checkPoolsCreatedOrNot();
+                } else {
+                    fabAddTeam.setVisibility(View.VISIBLE);
+                    fabCreatePool.setVisibility(View.GONE);
+                }
             }
+        } else {
+            fabAddTeam.setVisibility(View.GONE);
+            fabCreatePool.setVisibility(View.GONE);
         }
     }
 
@@ -132,10 +137,6 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
         rvTeamsList.addItemDecoration(new RecyclerItemDecorator(10));
         rvTeamsList.setLayoutManager(linearLayoutManager);
         getTeamsListIfInternetAvailable();
-        if (!TextUtils.isEmpty(isUserLoggedIn) && !isUserLoggedIn.equalsIgnoreCase(Constants.FALSE)) {
-            fabAddTeam.setVisibility(View.GONE);
-            fabCreatePool.setVisibility(View.GONE);
-        }
         fabCreatePool.setOnClickListener(this);
         fabAddTeam.setOnClickListener(this);
     }
