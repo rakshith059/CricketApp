@@ -61,6 +61,9 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
 
         holder.cvMainContainer.setTag(teamScore);
         holder.cvMainContainer.setOnClickListener(this);
+
+        Constants constants = new Constants();
+        constants.setFadeAnimation(holder.itemView);
     }
 
     @Override

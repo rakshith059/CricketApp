@@ -73,6 +73,8 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.MatchesV
                 holder.ivMatchDetailView.setVisibility(View.GONE);
             }
         }
+        Constants constants = new Constants();
+        constants.setFadeAnimation(holder.itemView);
     }
 
     @Override

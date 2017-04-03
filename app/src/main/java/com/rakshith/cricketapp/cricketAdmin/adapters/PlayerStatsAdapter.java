@@ -84,6 +84,9 @@ public class PlayerStatsAdapter extends RecyclerView.Adapter<PlayerStatsAdapter.
 
         holder.cvMainContainer.setTag(memberStats);
         holder.cvMainContainer.setOnClickListener(this);
+
+        Constants constants = new Constants();
+        constants.setFadeAnimation(holder.itemView);
     }
 
     @Override
