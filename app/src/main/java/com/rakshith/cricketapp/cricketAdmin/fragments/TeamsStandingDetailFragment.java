@@ -3,7 +3,6 @@ package com.rakshith.cricketapp.cricketAdmin.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
@@ -36,6 +36,7 @@ public class TeamsStandingDetailFragment extends BaseFragment implements View.On
     ImageView ivTeamValueRulesInfo;
 
     TeamScore teamScore;
+    private ImageView iv_trophy;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -62,7 +63,14 @@ public class TeamsStandingDetailFragment extends BaseFragment implements View.On
         tvWicketsTook = (TextView) view.findViewById(R.id.team_standing_detail_tv_wickets_took);
         tvTeamValue = (TextView) view.findViewById(R.id.team_standing_detail_tv_team_value);
 
+        iv_trophy = (ImageView) view.findViewById(R.id.fragment_team_standing_detail);
+
         ivTeamValueRulesInfo = (ImageView) view.findViewById(R.id.team_standing_detail_iv_team_value_rules);
+
+        Glide.with(mActivity)
+                .load(R.drawable.ic_trophy)
+                .asGif()
+                .into(iv_trophy);
 
         return view;
     }
@@ -98,7 +106,6 @@ public class TeamsStandingDetailFragment extends BaseFragment implements View.On
         tvTeamValue.setText(String.valueOf(mTeamValue));
 
         ivTeamValueRulesInfo.setOnClickListener(this);
-
     }
 
     @Override

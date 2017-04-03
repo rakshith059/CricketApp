@@ -51,6 +51,15 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/size_16sp"
                 android:textStyle="italic|bold" />
+
+            <ImageView
+                android:id="@+id/fragment_matches_detail_iv_trophy"
+                android:layout_width="@dimen/size_150dp"
+                android:layout_height="@dimen/size_150dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/size_30dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_trophy" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

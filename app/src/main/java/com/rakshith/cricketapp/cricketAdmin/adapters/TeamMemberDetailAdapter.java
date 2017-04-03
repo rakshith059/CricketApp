@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
@@ -76,7 +75,7 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
 
 //            Glide.with(mActivity)
 //                    .load(roleImageId)
-//                    .placeholder(R.drawable.ic_rx1_logo)
+//                    .placeholder(R.drawable.rx1_logo)
 //                    .into(holder.ivPlayerRole);
         }
 

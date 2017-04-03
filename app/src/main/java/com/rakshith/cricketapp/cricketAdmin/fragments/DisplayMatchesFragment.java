@@ -6,8 +6,10 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.rakshith.cricketapp.R;
@@ -47,6 +49,7 @@ public class DisplayMatchesFragment extends BaseFragment {
     private String manOfTheMatch;
     private String matchNumber;
     private Bundle analyticsBundle;
+    private ImageView ivTrophy;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -73,6 +76,11 @@ public class DisplayMatchesFragment extends BaseFragment {
         tvMatchWinBy = (TextView) view.findViewById(R.id.fragment_matches_detail_tv_match_win_by);
         tvManOfTheMatch = (TextView) view.findViewById(R.id.fragment_matches_detail_tv_mom);
 
+        ivTrophy = (ImageView) view.findViewById(R.id.fragment_matches_detail_iv_trophy);
+        Glide.with(mActivity)
+                .load(R.drawable.ic_trophy)
+                .asGif()
+                .into(ivTrophy);
         return view;
     }
 
