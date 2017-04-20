@@ -9,6 +9,7 @@
     <color name="black">#000000</color>
 
     <color name="semi_transparent">#99000000</color>
+    <color name="image_transparent">#66000000</color>
     <color name="purple">#744eaa</color>
     <color name="purple_1">#885ead</color>
     <color name="purple_2">#aa8cc5</color>

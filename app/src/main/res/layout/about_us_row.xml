@@ -1,30 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:elevation="2dp"
-    android:orientation="vertical">
 
-    <android.support.v7.widget.CardView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/size_1dp"
-        android:elevation="@dimen/size_5dp"
-        app:cardCornerRadius="@dimen/size_10dp">
+        android:elevation="2dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/about_us_row_tv_name"
+        <!--<android.support.v7.widget.CardView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/size_1dp"-->
+        <!--android:elevation="@dimen/size_5dp"-->
+        <!--app:cardCornerRadius="@dimen/size_10dp">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/about_us_row_tv_name"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@color/purple"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:padding="@dimen/size_10dp"-->
+        <!--android:text="@string/player_name"-->
+        <!--android:textAllCaps="true"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:textSize="@dimen/size_15sp"-->
+        <!--android:textStyle="bold" />-->
+        <!--</android.support.v7.widget.CardView>-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_250dp">
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_rx1"
+                android:scaleType="fitXY" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/image_transparent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:padding="@dimen/size_10dp"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple"
-            android:gravity="center_vertical"
-            android:padding="@dimen/size_10dp"
-            android:text="@string/player_name"
-            android:textAllCaps="true"
-            android:textColor="@color/white"
-            android:textSize="@dimen/size_15sp"
-            android:textStyle="bold" />
-    </android.support.v7.widget.CardView>
+            android:orientation="vertical">
 
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_10dp"
+                android:text="karthik"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_12sp" />
+
+            <LinearLayout
+                android:id="@+id/about_us_row_ll_phone1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_10dp"
+                    android:src="@android:drawable/ic_menu_call" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:maxLength="10"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/phone_karthik"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/size_16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_10dp"
+                android:text="Nataraj"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_12sp" />
+
+            <LinearLayout
+                android:id="@+id/about_us_row_ll_phone2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_10dp"
+                    android:src="@android:drawable/ic_menu_call" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:maxLength="10"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/phone_natraj"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/size_16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_10dp"
+                android:text="Mohan"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_12sp" />
+
+            <LinearLayout
+                android:id="@+id/about_us_row_ll_phone3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_10dp"
+                    android:src="@android:drawable/ic_menu_call" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:maxLength="10"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/phone_mohan"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/size_16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_10dp"
+                android:text="Nithin"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_12sp" />
+
+            <LinearLayout
+                android:id="@+id/about_us_row_ll_phone4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_10dp"
+                    android:src="@android:drawable/ic_menu_call" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:maxLength="10"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/phone_nithin"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/size_16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

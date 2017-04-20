@@ -2,13 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color3"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/fragment_login_til_username"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_10dp">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/fragment_login_et_username"
@@ -16,14 +17,15 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_username"
             android:inputType="textEmailAddress"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/fragment_login_til_password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_10dp">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/fragment_login_et_password"
@@ -31,7 +33,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
-            android:textColor="@color/white" />
+            android:textColor="@color/black" />
 
     </android.support.design.widget.TextInputLayout>
 

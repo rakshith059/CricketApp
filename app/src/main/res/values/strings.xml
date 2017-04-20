@@ -100,8 +100,8 @@
     <string name="retry">RETRY</string>
     <string name="teams_detail">Teams detail</string>
     <string name="view_more">View more</string>
-    <string name="pollA">POLL A</string>
-    <string name="pollB">POLL B</string>
+    <string name="pollA">POOL A</string>
+    <string name="pollB">POOL B</string>
     <string name="create_polls">generate pools</string>
     <string name="pools_not_generated">Pools not generated yet.. Please wait for few moments</string>
     <string name="player_name">player name</string>
@@ -184,6 +184,11 @@
     <string name="total_wickets_lost">Total wickets lost</string>
     <string name="total_wickets_took">Total wickets took</string>
     <string name="total_team_value">Total team value</string>
+    <string name="phone_karthik">7829832921</string>
+    <string name="phone_nithin">9742875757</string>
+    <string name="phone_mohan">8050709336</string>
+    <string name="phone_natraj">8867553525</string>
+    <string name="email_id">email-id</string>
 
 
 </resources>

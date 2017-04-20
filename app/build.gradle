@@ -53,7 +53,7 @@ android {
     }
 
     productFlavors {
-        rx1Admin {
+        RX1_cricketers {
             applicationId = "com.rakshith.cricketapp"
         }
     }
