@@ -69,7 +69,7 @@ public class TeamMemberDetailAdapter extends RecyclerView.Adapter<TeamMemberDeta
                 roleImageId = R.drawable.ic_all_rounder;
             else if (playerRole.equalsIgnoreCase(Constants.ROLE_KEEPER))
                 roleImageId = R.drawable.ic_wicket_keeper;
-            else roleImageId = R.drawable.ic_rx1_logo;
+            else roleImageId = R.drawable.ic_logo;
 
             holder.ivPlayerRole.setImageResource(roleImageId);
 

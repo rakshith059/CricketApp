@@ -39,6 +39,8 @@ import com.rakshith.cricketapp.cricketAdmin.fragments.SponserFragment;
 
 import java.util.ArrayList;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConnectionFailedListener,
         NavigationView.OnNavigationItemSelectedListener {
     FrameLayout flMainContainer;

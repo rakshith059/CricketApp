@@ -102,7 +102,7 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
 
     private void displayHideLayoutAfterReachingMaxTeam(int teamSize) {
         if (!TextUtils.isEmpty(isUserLoggedIn) && isUserLoggedIn.equalsIgnoreCase(Constants.TRUE)) {
-            if (teams != null && teams.size() > 0) {
+            if (teams != null && teams.size() >= 0) {
                 if (teams.size() == teamSize) {
                     fabAddTeam.setVisibility(View.GONE);
                     checkPoolsCreatedOrNot();

@@ -36,5 +36,5 @@
         android:layout_width="@dimen/size_200dp"
         android:layout_height="@dimen/size_200dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_rx1_logo" />
+        android:src="@drawable/ic_logo" />
 </android.support.design.widget.CoordinatorLayout>

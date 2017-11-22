@@ -30,7 +30,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Glide.with(SplashActivity.this)
-                        .load(R.drawable.ic_rx1_logo)
+                        .load(R.drawable.ic_logo)
                         .into(ivSplashGif);
             }
         }, 4000);
