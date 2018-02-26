@@ -47,6 +47,7 @@ public class BowlerFragment extends BaseFragment implements View.OnClickListener
 
     Bundle bundle;
     private AdView mAdView;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,6 +94,8 @@ public class BowlerFragment extends BaseFragment implements View.OnClickListener
         rvPlayerStats.addItemDecoration(new RecyclerItemDecorator(2));
         rvPlayerStats.setLayoutManager(linearLayoutManager);
 
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
+
         tvBallsOverCatches.setText(getResources().getString(R.string.overs_bowled));
         tvRunsWicketsRunOuts.setText(getResources().getString(R.string.wickets_took));
         tvFoursMaidenStump.setText(getResources().getString(R.string.maidens));
@@ -105,7 +108,7 @@ public class BowlerFragment extends BaseFragment implements View.OnClickListener
 
     private void getPlayerStats(String orderByChildValue) {
         pbProgress.setVisibility(View.VISIBLE);
-        databaseReference.child(Constants.DB_PLAYER_STATS).orderByChild(orderByChildValue).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(year).child(Constants.DB_PLAYER_STATS).orderByChild(orderByChildValue).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 pbProgress.setVisibility(View.GONE);

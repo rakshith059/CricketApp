@@ -38,6 +38,7 @@ public class SponserFragment extends BaseFragment {
     private ArrayList<SponsorModel> sponsorList;
 
     SponsorAdapter sponsorAdapter;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -59,12 +60,13 @@ public class SponserFragment extends BaseFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(mActivity);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvSponserList.setLayoutManager(layoutManager);
 
-        databaseReference.child(Constants.DB_SPONSORS).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(year).child(Constants.DB_SPONSORS).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 sponsorList = new ArrayList<>();

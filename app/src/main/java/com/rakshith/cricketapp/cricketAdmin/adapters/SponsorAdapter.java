@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -47,23 +49,31 @@ public class SponsorAdapter extends RecyclerView.Adapter<SponsorAdapter.SponsorV
         SponsorModel sponsorModel = sponsorList.get(position);
         String mSponsorName = sponsorModel.getName();
         String mSponsorDetail = sponsorModel.getDetail();
+        String mSponsorImageUrl = sponsorModel.getImageUrl();
 
-        String path = "Sponsers/" + mSponsorName + ".jpeg";
-        final StorageReference storageReference = firebaseStorage.getReference(path);
+//        String path = "Sponsers/" + mSponsorName + ".jpeg";
+//        final StorageReference storageReference = firebaseStorage.getReference(path);
 
         if (!TextUtils.isEmpty(mSponsorName))
             holder.tvSponsorName.setText(mSponsorName);
         if (!TextUtils.isEmpty(mSponsorDetail))
             holder.tvSponsorDetail.setText(mSponsorDetail);
+        if (!TextUtils.isEmpty(mSponsorImageUrl)) {
+            Glide.with(mActivity)
+                    .load(mSponsorImageUrl)
+                    .asBitmap()
+                    .centerCrop()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(new BitmapImageViewTarget(holder.ivSponsorImage));
+        }
 
-        final long ONE_MEGABYTE = 1024 * 1024;
-        storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                holder.ivSponsorImage.setImageBitmap(bitmap);
-            }
-        });
+//        final long ONE_MEGABYTE = 1024 * 1024;
+//        storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//            @Override
+//            public void onSuccess(byte[] bytes) {
+//
+//            }
+//        });
 
         final boolean[] isTextViewClicked = {false};
 

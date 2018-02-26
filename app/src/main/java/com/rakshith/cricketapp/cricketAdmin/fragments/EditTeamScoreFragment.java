@@ -78,6 +78,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
     private RadioGroup rgWinLost;
     private String winLost;
     private String cityName;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -126,6 +127,8 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
+
         getTeamScore();
 
         Handler handler = new Handler();
@@ -174,7 +177,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
     }
 
     private void getTeamScore() {
-        databaseReference.child(Constants.DB_TEAMS_SCORE).child(teamName).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(year).child(Constants.DB_TEAMS_SCORE).child(teamName).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot.getChildren() != null) {
@@ -243,7 +246,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
 
         TeamScore teamScore = new TeamScore(teamName, cityName, matchesPlayed, wins, lost, scoreFor, wicketsLost, scoreAgainst,
                 wicketsTook, totalPoints);
-        databaseReference.child(Constants.DB_TEAMS_SCORE).child(teamName).setValue(teamScore);
+        databaseReference.child(year).child(Constants.DB_TEAMS_SCORE).child(teamName).setValue(teamScore);
 
         ((HomeActivity) getActivity()).popCurrentFragment();
     }

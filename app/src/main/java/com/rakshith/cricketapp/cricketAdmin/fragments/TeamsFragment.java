@@ -62,6 +62,8 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
     FirebaseRemoteConfig remoteConfig;
     private AdView mAdView;
 
+    String year = Constants.PARAM_YEAR_2018;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teams_info, container, false);
@@ -69,6 +71,8 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
         remoteConfig = FirebaseRemoteConfig.getInstance();
         remoteConfig.setConfigSettings(new FirebaseRemoteConfigSettings.Builder().setDeveloperModeEnabled(true)
                 .build());
+
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
 
         HashMap<String, Object> defaults = new HashMap<>();
         defaults.put(getResources().getString(R.string.team_size), 8);
@@ -179,7 +183,7 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
     }
 
     private void checkPoolsCreatedOrNot() {
-        firebaseDatabase.getReference().child(Constants.DB_POLL_A).addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference().child(year).child(Constants.DB_POLL_A).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 long poolTeamCount = dataSnapshot.getChildrenCount();
@@ -201,7 +205,7 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
 
         DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 
-        database.child(Constants.DB_TEAM).addValueEventListener(new ValueEventListener() {
+        database.child(year).child(Constants.DB_TEAM).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 pbProgressBar.setVisibility(View.GONE);
@@ -209,7 +213,7 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                     TeamList teamList = noteDataSnapshot.getValue(TeamList.class);
                     teams.add(teamList);
-                    Log.d("Rakshith", "team name " + teamList.getTeamName() + " " + "captain name " + teamList.getTeamMembers().get(1).getName() + teamList.getTeamMembers().get(1).getRole());
+//                    Log.d("Rakshith", "team name " + teamList.getTeamName() + " " + "captain name " + teamList.getTeamMembers().get(1).getName() + teamList.getTeamMembers().get(1).getRole());
                 }
 //                adapter.updateList(notes);
                 fetchFromRemoteConfig();
@@ -248,19 +252,19 @@ public class TeamsFragment extends BaseFragment implements View.OnClickListener 
                     pollATeams = teams.subList(0, pollASize);
                     pollBTeams = teams.subList(pollASize, teamsSize);
 
-                    DatabaseReference databasePollA = firebaseDatabase.getReference(Constants.DB_POLL_A);
-                    DatabaseReference databasePollB = firebaseDatabase.getReference(Constants.DB_POLL_B);
+                    DatabaseReference databasePollA = firebaseDatabase.getReference(year);
+                    DatabaseReference databasePollB = firebaseDatabase.getReference(year);
 
 
                     if (TextUtils.isEmpty(userIdPollA)) {
                         userIdPollA = databasePollA.push().getKey();
                     }
-                    databasePollA.child(userIdPollA).setValue(pollATeams);
+                    databasePollA.child(Constants.DB_POLL_A).child(userIdPollA).setValue(pollATeams);
 
                     if (TextUtils.isEmpty(userIdPollB)) {
                         userIdPollB = databasePollB.push().getKey();
                     }
-                    databasePollB.child(userIdPollB).setValue(pollBTeams).
+                    databasePollB.child(Constants.DB_POLL_B).child(userIdPollB).setValue(pollBTeams).
                             addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(Task<Void> task) {

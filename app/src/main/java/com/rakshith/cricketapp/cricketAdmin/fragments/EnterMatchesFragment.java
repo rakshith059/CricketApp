@@ -44,6 +44,7 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
     private String teamOneName;
     private String teamTwoName;
     private String matchNumber;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
 
         Bundle bundle = getArguments();
         if (bundle != null) {
@@ -70,7 +73,8 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
     }
 
     private void getTeams() {
-        databaseReference.child(Constants.DB_TEAM).addValueEventListener(
+
+        databaseReference.child(year).child(Constants.DB_TEAM).addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -166,7 +170,7 @@ public class EnterMatchesFragment extends BaseFragment implements View.OnClickLi
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                databaseReference.child(Constants.DB_MATCHES).child(matchNumber).setValue(matchList);
+                databaseReference.child(year).child(Constants.DB_MATCHES).child(matchNumber).setValue(matchList);
                 ((HomeActivity) getActivity()).popCurrentFragment();
             }
 

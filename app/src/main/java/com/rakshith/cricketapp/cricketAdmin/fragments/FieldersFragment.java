@@ -47,6 +47,7 @@ public class FieldersFragment extends BaseFragment implements View.OnClickListen
 
     Bundle bundle;
     private AdView mAdView;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -88,6 +89,8 @@ public class FieldersFragment extends BaseFragment implements View.OnClickListen
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvPlayerStats.addItemDecoration(new RecyclerItemDecorator(2));
@@ -105,7 +108,7 @@ public class FieldersFragment extends BaseFragment implements View.OnClickListen
 
     private void getPlayerStats(String orderByChildValue) {
         pbProgress.setVisibility(View.VISIBLE);
-        databaseReference.child(Constants.DB_PLAYER_STATS).orderByChild(orderByChildValue).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(year).child(Constants.DB_PLAYER_STATS).orderByChild(orderByChildValue).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 pbProgress.setVisibility(View.GONE);

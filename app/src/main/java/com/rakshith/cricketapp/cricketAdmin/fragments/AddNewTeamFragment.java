@@ -85,13 +85,17 @@ public class AddNewTeamFragment extends BaseFragment {
     private static final int PICK_IMAGE_REQUEST = 234;
     private Uri filePath;
     private boolean isImageAdded = false;
+    String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_new_team, container, false);
 
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
+
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference(Constants.DB_TEAM);
+//        databaseReference = firebaseDatabase.getReference(Constants.DB_TEAM);
+        databaseReference = firebaseDatabase.getReference(year);
 
         teamMembersList = new ArrayList<>();
 
@@ -443,7 +447,7 @@ public class AddNewTeamFragment extends BaseFragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 //                if (!dataSnapshot.child("teamName").hasChild(teamName)) {
-                databaseReference.child(userId).setValue(nameList);
+                databaseReference.child(Constants.DB_TEAM).child(userId).setValue(nameList);
                 ((HomeActivity) getActivity()).popCurrentFragment();
 //                    Log.d("Rakshith", "dont have user " + teamName);
 //                    addNameChangeListner();

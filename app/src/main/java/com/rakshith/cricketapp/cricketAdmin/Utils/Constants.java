@@ -74,6 +74,7 @@ public class Constants {
      * Constants for firebase analytics
      */
     public static String PARAM_SCREEN_NAME = "screen_name";
+    public static String PARAM_YEAR = "year";
     public static String PARAM_TEAM_NAME = "team_name";
     public static String PARAM_MATCH_NO = "match_number";
     public static String PARAM_ORDER_BY = "order_by";
@@ -92,6 +93,8 @@ public class Constants {
     public static String PARAM_ORDER_BY_TOTAL_POINTS = "order_by_total_points";
 
     public static final String PARAM_SCREEN_NAME_HOME = "screen_name_home";
+    public static final String PARAM_YEAR_2017 = "2017";
+    public static final String PARAM_YEAR_2018 = "2018";
     public static String PARAM_SCREEN_NAME_TEAMS = "screen_name_teams";
     public static String PARAM_SCREEN_NAME_POOLS = "screen_name_pools";
     public static String PARAM_SCREEN_NAME_MATCHES = "screen_name_matches";

@@ -45,6 +45,7 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
     Bundle bundle = new Bundle();
     private FloatingActionButton fabEnterMatches;
     private AdView mAdView;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +53,8 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
+
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
 
         rvMatches = (RecyclerView) view.findViewById(R.id.common_recycler_view_rv);
         progressBar = (ProgressBar) view.findViewById(R.id.common_recycler_view_pb_progress);
@@ -96,7 +99,7 @@ public class MatchsFragment extends BaseFragment implements View.OnClickListener
 
     private void getMatches() {
         progressBar.setVisibility(View.VISIBLE);
-        databaseReference.child(Constants.DB_MATCHES).addValueEventListener(new ValueEventListener() {
+        databaseReference.child(year).child(Constants.DB_MATCHES).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 progressBar.setVisibility(View.GONE);

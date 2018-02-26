@@ -12,6 +12,7 @@ public class TeamList implements Parcelable {
     private String teamName;
     private String cityName;
     private String contactNo;
+    private String teamImageUrl;
     private List<MemberItem> teamMembers = null;
 
     public TeamList() {
@@ -28,6 +29,7 @@ public class TeamList implements Parcelable {
         teamName = in.readString();
         cityName = in.readString();
         contactNo = in.readString();
+        teamImageUrl = in.readString();
     }
 
     public static final Creator<TeamList> CREATOR = new Creator<TeamList>() {
@@ -74,6 +76,14 @@ public class TeamList implements Parcelable {
         this.contactNo = contactNo;
     }
 
+    public String getTeamImageUrl() {
+        return teamImageUrl;
+    }
+
+    public void setTeamImageUrl(String teamImageUrl) {
+        this.teamImageUrl = teamImageUrl;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -84,5 +94,6 @@ public class TeamList implements Parcelable {
         dest.writeString(teamName);
         dest.writeString(cityName);
         dest.writeString(contactNo);
+        dest.writeString(teamImageUrl);
     }
 }

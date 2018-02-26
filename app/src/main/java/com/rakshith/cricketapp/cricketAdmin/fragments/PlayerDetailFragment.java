@@ -34,6 +34,7 @@ public class PlayerDetailFragment extends BaseFragment {
     DatabaseReference databaseReference;
     MemberStats memberDetail;
     private Bundle analyticsBundle;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,6 +42,8 @@ public class PlayerDetailFragment extends BaseFragment {
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference(Constants.DB_PLAYER_STATS);
+
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
 
         Bundle bundle = getArguments();
         if (bundle != null) {

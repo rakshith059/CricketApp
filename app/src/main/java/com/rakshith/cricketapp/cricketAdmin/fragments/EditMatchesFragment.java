@@ -81,6 +81,7 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
 
     MatchList matchList;
     LinearLayout llWinByRunsWickets;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -132,7 +133,8 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
     }
 
     private void getTeams() {
-        databaseReference.child(Constants.DB_TEAM).addValueEventListener(
+        String year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
+        databaseReference.child(year).child(Constants.DB_TEAM).addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -154,6 +156,8 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
 
         matchNumber = matchList.getMatchNumber();
         teamOneName = matchList.getTeamOneName();
@@ -357,7 +361,7 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                databaseReference.child(Constants.DB_MATCHES).child(matchNumber).setValue(matchList);
+                databaseReference.child(year).child(Constants.DB_MATCHES).child(matchNumber).setValue(matchList);
                 ((HomeActivity) getActivity()).popCurrentFragment();
             }
 

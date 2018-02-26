@@ -45,6 +45,7 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
 
     Bundle bundle;
     private AdView mAdView;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -96,6 +97,8 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
         rvTeamsScores.addItemDecoration(new RecyclerItemDecorator(2));
         rvTeamsScores.setLayoutManager(layoutManager);
 
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
+
         getTeamStandingsIfInternetAvailable(Constants.DB_TEAMS_SCORE_CHILD_TOTAL_POINT);
 
         tvPlayedMatches.setOnClickListener(this);
@@ -106,7 +109,7 @@ public class TeamsStandingFragment extends BaseFragment implements View.OnClickL
 
     private void getTeamStandingsIfInternetAvailable(String orderByChildValue) {
         pbProgressBar.setVisibility(View.VISIBLE);
-        databaseReference.child(Constants.DB_TEAMS_SCORE).orderByChild(orderByChildValue)
+        databaseReference.child(year).child(Constants.DB_TEAMS_SCORE).orderByChild(orderByChildValue)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

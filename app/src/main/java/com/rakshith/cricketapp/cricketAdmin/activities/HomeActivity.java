@@ -67,6 +67,8 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
         isUserLoggedIn = Constants.getSharedPrefrenceString(this, Constants.IS_USER_LOGGED_IN);
 
+        Constants.setSharedPrefrence(this, Constants.PARAM_YEAR, Constants.PARAM_YEAR_2018);
+
 //        toolbar = (Toolbar) findViewById(R.id.activity_home_detail_toolbar);
 //        setSupportActionBar(toolbar);
         Toolbar toolbarMain = (Toolbar) findViewById(R.id.toolbar);
@@ -204,8 +206,16 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
         int id = item.getItemId();
         Bundle bundle = new Bundle();
         if (id == R.id.nav_home) {
+            Constants.setSharedPrefrence(this, Constants.PARAM_YEAR, Constants.PARAM_YEAR_2018);
             replaceFragment(new HomeFragment(), null, null);
             bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_HOME);
+            bundle.putString(Constants.PARAM_YEAR, Constants.PARAM_YEAR_2018);
+            fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
+        } else if (id == R.id.nav_last_year) {
+            Constants.setSharedPrefrence(this, Constants.PARAM_YEAR, Constants.PARAM_YEAR_2017);
+            replaceFragment(new HomeFragment(), null, null);
+            bundle.putString(Constants.PARAM_SCREEN_NAME, Constants.PARAM_SCREEN_NAME_HOME);
+            bundle.putString(Constants.PARAM_YEAR, Constants.PARAM_YEAR_2017);
             fireBaseAnalyticsEvents(Constants.EVENT_VIEW, bundle);
         } else if (id == R.id.nav_rules) {
             replaceFragment(new RulesFragment(), "rulesFragment", null);

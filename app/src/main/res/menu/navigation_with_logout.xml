@@ -7,6 +7,10 @@
             android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
+            android:id="@+id/nav_last_year"
+            android:icon="@drawable/ic_logo"
+            android:title="Previous Year" />
+        <item
             android:id="@+id/nav_rules"
             android:icon="@drawable/ic_rules"
             android:title="Rules" />

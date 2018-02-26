@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.rakshith.cricketapp.R;
 import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
@@ -44,19 +46,28 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHol
         String cityName = team.getCityName();
         String captainName = team.getTeamMembers().get(0).getName();
         String contactNumber = team.getContactNo();
+        String mTeamImageUrl = team.getTeamImageUrl();
 
         if (!TextUtils.isEmpty(teamName)) {
             holder.tvTeamName.setText(teamName);
         }
         if (!TextUtils.isEmpty(cityName)) {
             holder.tvCityName.setText(cityName);
-            setBackgroundImage(cityName, holder);
+//            setBackgroundImage(cityName, holder);
         }
         if (!TextUtils.isEmpty(captainName)) {
             holder.tvCaptainName.setText(captainName);
         }
         if (!TextUtils.isEmpty(contactNumber)) {
             holder.tvContactNumber.setText(contactNumber);
+        }
+        if (!TextUtils.isEmpty(mTeamImageUrl)) {
+            Glide.with(mActivity)
+                    .load(mTeamImageUrl)
+                    .asBitmap()
+                    .placeholder(R.drawable.gradient_background)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(new BitmapImageViewTarget(holder.ivBgImage));
         }
 
         holder.cvMainContainer.setOnClickListener(this);
@@ -67,28 +78,28 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHol
 //        constants.setScaleAnimation(holder.itemView);
     }
 
-    private void setBackgroundImage(String cityName, TeamsViewHolder holder) {
-        if (cityName.equalsIgnoreCase(Constants.TARIKERE)) {
-            backgroundImageId = R.drawable.ic_tarikere;
-        } else if (cityName.equalsIgnoreCase(Constants.BHADRAVATHI)) {
-            backgroundImageId = R.drawable.ic_bhadravati;
-        } else if (cityName.equalsIgnoreCase(Constants.KADUR)) {
-            backgroundImageId = R.drawable.ic_kadur;
-        } else if (cityName.equalsIgnoreCase(Constants.SHIVAMOGA)) {
-            backgroundImageId = R.drawable.ic_shimoga;
-        } else if (cityName.equalsIgnoreCase(Constants.ARSIKERE)) {
-            backgroundImageId = R.drawable.ic_arsikere;
-        } else if (cityName.equalsIgnoreCase(Constants.TIPTUR)) {
-            backgroundImageId = R.drawable.ic_tiptur;
-        } else if (cityName.equalsIgnoreCase(Constants.HASSAN)) {
-            backgroundImageId = R.drawable.ic_hassan;
-        } else {
-            backgroundImageId = R.drawable.gradient_bg;
-        }
-        Glide.with(mActivity)
-                .load(backgroundImageId)
-                .into(holder.ivBgImage);
-    }
+//    private void setBackgroundImage(String cityName, TeamsViewHolder holder) {
+//        if (cityName.equalsIgnoreCase(Constants.TARIKERE)) {
+//            backgroundImageId = R.drawable.ic_tarikere;
+//        } else if (cityName.equalsIgnoreCase(Constants.BHADRAVATHI)) {
+//            backgroundImageId = R.drawable.ic_bhadravati;
+//        } else if (cityName.equalsIgnoreCase(Constants.KADUR)) {
+//            backgroundImageId = R.drawable.ic_kadur;
+//        } else if (cityName.equalsIgnoreCase(Constants.SHIVAMOGA)) {
+//            backgroundImageId = R.drawable.ic_shimoga;
+//        } else if (cityName.equalsIgnoreCase(Constants.ARSIKERE)) {
+//            backgroundImageId = R.drawable.ic_arsikere;
+//        } else if (cityName.equalsIgnoreCase(Constants.TIPTUR)) {
+//            backgroundImageId = R.drawable.ic_tiptur;
+//        } else if (cityName.equalsIgnoreCase(Constants.HASSAN)) {
+//            backgroundImageId = R.drawable.ic_hassan;
+//        } else {
+//            backgroundImageId = R.drawable.gradient_bg;
+//        }
+//        Glide.with(mActivity)
+//                .load(backgroundImageId)
+//                .into(holder.ivBgImage);
+//    }
 
     @Override
     public int getItemCount() {

@@ -88,6 +88,7 @@ public class EditTeamMemberStatsFragment extends BaseFragment implements View.On
     int iPreviousCatches = 0;
     int iPreviousRunouts = 0;
     int iPreviousStumps = 0;
+    private String year = Constants.PARAM_YEAR_2018;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -146,11 +147,13 @@ public class EditTeamMemberStatsFragment extends BaseFragment implements View.On
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
+
         if (!TextUtils.isEmpty(mPlayerName) && !TextUtils.isEmpty(mTeamName)) {
             tvPlayerName.setText(mPlayerName);
 
             String playerNameTeamName = mPlayerName + "_" + mTeamName;
-            databaseReference.child(Constants.DB_PLAYER_STATS).child(playerNameTeamName)
+            databaseReference.child(year).child(Constants.DB_PLAYER_STATS).child(playerNameTeamName)
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -240,7 +243,7 @@ public class EditTeamMemberStatsFragment extends BaseFragment implements View.On
 
             String playerNameTeamName = mPlayerName + "_" + mTeamName;
 
-            databaseReference.child(Constants.DB_PLAYER_STATS).child(playerNameTeamName).setValue(memberStats).addOnCompleteListener(
+            databaseReference.child(year).child(Constants.DB_PLAYER_STATS).child(playerNameTeamName).setValue(memberStats).addOnCompleteListener(
                     new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(Task<Void> task) {

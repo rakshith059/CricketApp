@@ -123,7 +123,9 @@ public class PoolsFragment extends BaseFragment {
         pbMainProgress.setVisibility(View.VISIBLE);
 
         final DatabaseReference database = FirebaseDatabase.getInstance().getReference();
-        database.child(Constants.DB_POLL_A).addValueEventListener(
+        String year = Constants.getSharedPrefrenceString(mActivity, Constants.PARAM_YEAR);
+
+        database.child(year).child(Constants.DB_POLL_A).addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -158,7 +160,7 @@ public class PoolsFragment extends BaseFragment {
                 }
 
         );
-        database.child(Constants.DB_POLL_B).addValueEventListener(
+        database.child(year).child(Constants.DB_POLL_B).addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

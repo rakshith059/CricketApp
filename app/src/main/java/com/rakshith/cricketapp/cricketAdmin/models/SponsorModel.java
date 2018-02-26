@@ -10,18 +10,21 @@ import android.os.Parcelable;
 public class SponsorModel implements Parcelable {
     private String name;
     private String detail;
+    private String imageUrl;
 
     public SponsorModel() {
     }
 
-    public SponsorModel(String sponserName, String sponsorDetail) {
+    public SponsorModel(String sponserName, String sponsorDetail, String sponsorImageUrl) {
         this.name = sponserName;
         this.detail = sponsorDetail;
+        this.imageUrl = sponsorImageUrl;
     }
 
     protected SponsorModel(Parcel in) {
         name = in.readString();
         detail = in.readString();
+        imageUrl = in.readString();
     }
 
     public static final Creator<SponsorModel> CREATOR = new Creator<SponsorModel>() {
@@ -44,6 +47,14 @@ public class SponsorModel implements Parcelable {
         this.name = name;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     public String getDetail() {
         return detail;
     }
@@ -61,5 +72,6 @@ public class SponsorModel implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeString(detail);
+        dest.writeString(imageUrl);
     }
 }
