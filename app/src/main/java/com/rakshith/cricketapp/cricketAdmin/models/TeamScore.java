@@ -8,7 +8,6 @@ import android.os.Parcelable;
  */
 public class TeamScore implements Parcelable {
     private String teamName;
-    private String cityName;
     private int matchesPlayed;
     private int wins;
     private int lost;
@@ -22,9 +21,8 @@ public class TeamScore implements Parcelable {
     }
 
 
-    public TeamScore(String teamName, String cityName, int matchesPlayed, int wins, int lost, int scoreFor, int wicketsLost, int scoreAgainst, int wicketsTook, int totalPoints) {
+    public TeamScore(String teamName, int matchesPlayed, int wins, int lost, int scoreFor, int wicketsLost, int scoreAgainst, int wicketsTook, int totalPoints) {
         this.setTeamName(teamName);
-        this.setCityName(cityName);
         this.setMatchesPlayed(matchesPlayed);
         this.setWins(wins);
         this.setLost(lost);
@@ -37,7 +35,6 @@ public class TeamScore implements Parcelable {
 
     protected TeamScore(Parcel in) {
         setTeamName(in.readString());
-        setCityName(in.readString());
         setMatchesPlayed(in.readInt());
         setWins(in.readInt());
         setLost(in.readInt());
@@ -68,7 +65,6 @@ public class TeamScore implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(getTeamName());
-        dest.writeString(getCityName());
         dest.writeInt(getMatchesPlayed());
         dest.writeInt(getWins());
         dest.writeInt(getLost());
@@ -149,13 +145,5 @@ public class TeamScore implements Parcelable {
 
     public void setTotalPoints(int totalPoints) {
         this.totalPoints = totalPoints;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
     }
 }

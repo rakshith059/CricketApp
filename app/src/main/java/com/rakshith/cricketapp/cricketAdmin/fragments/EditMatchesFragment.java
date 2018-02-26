@@ -29,6 +29,7 @@ import com.rakshith.cricketapp.cricketAdmin.Utils.Constants;
 import com.rakshith.cricketapp.cricketAdmin.activities.HomeActivity;
 import com.rakshith.cricketapp.cricketAdmin.models.MatchList;
 import com.rakshith.cricketapp.cricketAdmin.models.TeamList;
+import com.rakshith.cricketapp.cricketAdmin.models.TeamScore;
 
 import java.util.ArrayList;
 
@@ -82,6 +83,17 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
     MatchList matchList;
     LinearLayout llWinByRunsWickets;
     private String year = Constants.PARAM_YEAR_2018;
+
+    private TeamScore teamScore;
+
+    private int previousWins;
+    private int previousLost;
+    private int previousRunsFor = 0;
+    private int previousWicketsLost = 0;
+    private int previousRunsAgainst = 0;
+    private int previousWicketsTook = 0;
+    private int previousPoints = 0;
+    private String winningTeam;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -343,14 +355,17 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
                 llWinByRunsWickets.setVisibility(View.VISIBLE);
                 tvTeamMatchWinBy.setVisibility(View.VISIBLE);
                 tvTeamMatchWinBy.setText(getResources().getString(R.string.match_win_by) + " " + teamOneName);
+                winningTeam = teamOneName;
             } else if (Integer.valueOf(mTeamOneRun) < Integer.valueOf(mTeamTwoRun)) {
                 llWinByRunsWickets.setVisibility(View.VISIBLE);
                 tvTeamMatchWinBy.setVisibility(View.VISIBLE);
                 tvTeamMatchWinBy.setText(getResources().getString(R.string.match_win_by) + " " + teamTwoName);
+                winningTeam = teamOneName;
             } else if (Integer.valueOf(mTeamOneRun) == Integer.valueOf(mTeamTwoRun)) {
                 llWinByRunsWickets.setVisibility(View.GONE);
                 tvTeamMatchWinBy.setVisibility(View.VISIBLE);
                 tvTeamMatchWinBy.setText(getResources().getString(R.string.match_tied_between) + " " + teamOneName + " & " + teamTwoName);
+                winningTeam = Constants.TIE;
             }
         }
     }
@@ -370,6 +385,110 @@ public class EditMatchesFragment extends BaseFragment implements View.OnClickLis
                 Log.d("Rakshith", "database error " + databaseError.getMessage());
             }
         });
+
+        if (teamOneName != null) {
+            TeamScore teamOneScore = getTeamScore(teamOneName);
+            int matchesPLayedByTeamOne = 0;
+            int teamOneRunsScored = 0;
+            int teamOneWicketsLost = 0;
+            int teamOneRunsAgainst = 0;
+            int teamOneWicketsTook = 0;
+            int teamOneWins = 0;
+            int teamOneLost = 0;
+            int teamOneTotalPoints = 0;
+
+            if (teamOneScore != null) {
+                matchesPLayedByTeamOne = teamOneScore.getMatchesPlayed() + 1;
+                teamOneRunsScored = teamOneScore.getRunsFor() + Integer.parseInt(teamOneRuns);
+                teamOneWicketsLost = teamOneScore.getWicketsLost() + Integer.parseInt(teamOneWickets);
+                teamOneRunsAgainst = teamOneScore.getRunsAgainst() + Integer.parseInt(teamTwoRuns);
+                teamOneWicketsTook = teamOneScore.getWicketsLost() + Integer.parseInt(teamTwoWickets);
+
+                teamOneWins = teamOneScore.getWins();
+                teamOneLost = teamOneScore.getLost();
+                teamOneTotalPoints = teamOneScore.getTotalPoints();
+            } else {
+                matchesPLayedByTeamOne = 1;
+                teamOneRunsScored = Integer.parseInt(teamOneRuns);
+                teamOneWicketsLost = Integer.parseInt(teamOneWickets);
+                teamOneRunsAgainst = Integer.parseInt(teamTwoRuns);
+                teamOneWicketsTook = Integer.parseInt(teamTwoWickets);
+            }
+
+            if (winningTeam.equalsIgnoreCase(teamOneName)) {
+                teamOneWins = +1;
+                teamOneTotalPoints = +2;
+            } else if (winningTeam.equalsIgnoreCase(teamTwoName)) {
+                teamOneLost = +1;
+                teamOneTotalPoints = +0;
+            } else {
+                teamOneTotalPoints = +1;
+            }
+
+            TeamScore teamScore = new TeamScore(teamOneName, matchesPLayedByTeamOne, teamOneWins, teamOneLost, teamOneRunsScored, teamOneWicketsLost, teamOneRunsAgainst,
+                    teamOneWicketsTook, teamOneTotalPoints);
+            databaseReference.child(year).child(Constants.DB_TEAMS_SCORE).child(teamOneName).setValue(teamScore);
+        }
+        if (teamTwoName != null) {
+            TeamScore teamTwoScore = getTeamScore(teamOneName);
+            int matchesPLayedByTeamTwo = 0;
+            int teamTwoRunsScored = 0;
+            int teamTwoWicketsLost = 0;
+            int teamTwoRunsAgainst = 0;
+            int teamTwoWicketsTook = 0;
+            int teamTwoWins = 0;
+            int teamTwoLost = 0;
+            int teamTwoTotalPoints = 0;
+            if (teamTwoScore != null) {
+                matchesPLayedByTeamTwo = teamTwoScore.getMatchesPlayed() + 1;
+                teamTwoRunsScored = teamTwoScore.getRunsFor() + Integer.parseInt(teamTwoRuns);
+                teamTwoWicketsLost = teamTwoScore.getWicketsLost() + Integer.parseInt(teamTwoWickets);
+                teamTwoRunsAgainst = teamTwoScore.getRunsAgainst() + Integer.parseInt(teamOneRuns);
+                teamTwoWicketsTook = teamTwoScore.getWicketsLost() + Integer.parseInt(teamOneWickets);
+
+                teamTwoWins = teamTwoScore.getWins();
+                teamTwoLost = teamTwoScore.getLost();
+                teamTwoTotalPoints = teamTwoScore.getTotalPoints();
+            } else {
+                matchesPLayedByTeamTwo = 1;
+                teamTwoRunsScored = Integer.parseInt(teamTwoRuns);
+                teamTwoWicketsLost = Integer.parseInt(teamTwoWickets);
+                teamTwoRunsAgainst = Integer.parseInt(teamOneRuns);
+                teamTwoWicketsTook = Integer.parseInt(teamOneWickets);
+            }
+
+            if (winningTeam.equalsIgnoreCase(teamTwoName)) {
+                teamTwoWins = +1;
+                teamTwoTotalPoints = +2;
+            } else if (winningTeam.equalsIgnoreCase(teamOneName)) {
+                teamTwoLost = +1;
+                teamTwoTotalPoints = +0;
+            } else {
+                teamTwoTotalPoints = +1;
+            }
+
+            TeamScore teamScore = new TeamScore(teamTwoName, matchesPLayedByTeamTwo, teamTwoWins, teamTwoLost, teamTwoRunsScored, teamTwoWicketsLost, teamTwoRunsAgainst,
+                    teamTwoWicketsTook, teamTwoTotalPoints);
+            databaseReference.child(year).child(Constants.DB_TEAMS_SCORE).child(teamTwoName).setValue(teamScore);
+        }
+    }
+
+    private TeamScore getTeamScore(String teamName) {
+        databaseReference.child(year).child(Constants.DB_TEAMS_SCORE).child(teamName).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getChildren() != null) {
+                    teamScore = dataSnapshot.getValue(TeamScore.class);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        return teamScore;
     }
 
     private boolean validate() {

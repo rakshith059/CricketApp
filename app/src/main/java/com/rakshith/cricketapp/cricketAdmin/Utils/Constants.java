@@ -66,7 +66,7 @@ public class Constants {
     public static final String WIN = "win";
     public static final String LOST = "lost";
     public static final String CITY_NAME = "city_name";
-    public static String DRAW = "draw";
+    public static String TIE = "tie";
 
     public static final String IS_USER_LOGGED_IN = "isUserLoggedIn";
 

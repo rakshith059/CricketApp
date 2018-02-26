@@ -48,12 +48,12 @@ public class PointsAdapter extends RecyclerView.Adapter<PointsAdapter.PointsHold
         matchesWin = teamScore.getWins();
         matchesLost = teamScore.getLost();
         points = teamScore.getTotalPoints();
-        String cityName = teamScore.getCityName();
+//        String cityName = teamScore.getCityName();
 
         if (!TextUtils.isEmpty(teamName))
             holder.tvTeamName.setText(teamName);
-        if (!TextUtils.isEmpty(cityName))
-            holder.tvCityName.setText(cityName);
+//        if (!TextUtils.isEmpty(cityName))
+//            holder.tvCityName.setText(cityName);
         holder.tvPlayedMatches.setText(String.valueOf(playedMatches));
         holder.tvWins.setText(String.valueOf(matchesWin));
         holder.tvLoss.setText(String.valueOf(matchesLost));

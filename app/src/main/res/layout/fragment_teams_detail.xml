@@ -29,6 +29,7 @@
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
+                    android:src="@drawable/gradient_background"
                     app:layout_collapseMode="pin" />
 
                 <View

@@ -165,7 +165,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
                         winLost = Constants.LOST;
                         break;
                     case R.id.fragment_edit_team_score_rb_draw:
-                        winLost = Constants.DRAW;
+                        winLost = Constants.TIE;
                         break;
                     default:
                         break;
@@ -217,7 +217,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
                 lost = previousLost + 1;
                 wins = previousWins;
                 totalPoints = previousPoints;
-            } else if (winLost == Constants.DRAW) {
+            } else if (winLost == Constants.TIE) {
                 wins = previousWins;
                 lost = previousLost;
                 totalPoints = previousPoints + 1;
@@ -244,7 +244,7 @@ public class EditTeamScoreFragment extends BaseFragment implements View.OnClickL
         wicketsTook = previousWicketsTook + wicketsTook;
 //        totalPoints = previousPoints + totalPoints;
 
-        TeamScore teamScore = new TeamScore(teamName, cityName, matchesPlayed, wins, lost, scoreFor, wicketsLost, scoreAgainst,
+        TeamScore teamScore = new TeamScore(teamName, matchesPlayed, wins, lost, scoreFor, wicketsLost, scoreAgainst,
                 wicketsTook, totalPoints);
         databaseReference.child(year).child(Constants.DB_TEAMS_SCORE).child(teamName).setValue(teamScore);
 
