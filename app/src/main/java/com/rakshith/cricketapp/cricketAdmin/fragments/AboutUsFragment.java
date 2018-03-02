@@ -1,8 +1,12 @@
 package com.rakshith.cricketapp.cricketAdmin.fragments;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +18,7 @@ import com.rakshith.cricketapp.R;
  * Created by rakshith on 5/28/16.
  */
 public class AboutUsFragment extends BaseFragment implements View.OnClickListener {
+    private static final int READ_PHONE_STATE_PERMISSION = 1001;
     LinearLayout llPhone1, llPhone2, llPhone3, llPhone4, llPhone5;
 
     @Override
@@ -57,11 +62,39 @@ public class AboutUsFragment extends BaseFragment implements View.OnClickListene
     }
 
     private void setPhoneCall(String phoneNumber) {
-        try {
-            Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber));
-            callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(callIntent);
-        } catch (Exception e) {
+        if (checkPermisssion()) {
+            try {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNumber));
+                callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(callIntent);
+            } catch (Exception e) {
+            }
+        } else requestPermission();
+    }
+
+    private boolean checkPermisssion() {
+        int result = ContextCompat.checkSelfPermission(mActivity, Manifest.permission.READ_PHONE_STATE);
+        return result == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M && mActivity.checkSelfPermission(Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE}, READ_PHONE_STATE_PERMISSION);
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case READ_PHONE_STATE_PERMISSION: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Permission granted do what you want from this point
+                } else {
+                    //Permission denied, manage this usecase
+                }
+            }
         }
     }
 
