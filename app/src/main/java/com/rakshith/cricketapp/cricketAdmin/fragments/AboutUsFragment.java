@@ -3,22 +3,18 @@ package com.rakshith.cricketapp.cricketAdmin.fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.google.android.gms.ads.AdView;
 import com.rakshith.cricketapp.R;
-
-import java.util.List;
 
 /**
  * Created by rakshith on 5/28/16.
  */
 public class AboutUsFragment extends BaseFragment implements View.OnClickListener {
-    LinearLayout llPhone1, llPhone2, llPhone3, llPhone4;
+    LinearLayout llPhone1, llPhone2, llPhone3, llPhone4, llPhone5;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,11 +28,13 @@ public class AboutUsFragment extends BaseFragment implements View.OnClickListene
         llPhone2 = (LinearLayout) view.findViewById(R.id.about_us_row_ll_phone2);
         llPhone3 = (LinearLayout) view.findViewById(R.id.about_us_row_ll_phone3);
         llPhone4 = (LinearLayout) view.findViewById(R.id.about_us_row_ll_phone4);
+        llPhone5 = (LinearLayout) view.findViewById(R.id.about_us_row_ll_phone5);
 
         llPhone1.setOnClickListener(this);
         llPhone2.setOnClickListener(this);
         llPhone3.setOnClickListener(this);
         llPhone4.setOnClickListener(this);
+        llPhone5.setOnClickListener(this);
         return view;
     }
 
@@ -71,16 +69,19 @@ public class AboutUsFragment extends BaseFragment implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.about_us_row_ll_phone1:
-                setPhoneCall(getResources().getString(R.string.phone_karthik));
-                break;
-            case R.id.about_us_row_ll_phone2:
-                setPhoneCall(getResources().getString(R.string.phone_natraj));
-                break;
-            case R.id.about_us_row_ll_phone3:
                 setPhoneCall(getResources().getString(R.string.phone_mohan));
                 break;
+            case R.id.about_us_row_ll_phone2:
+                setPhoneCall(getResources().getString(R.string.phone_sachin));
+                break;
+            case R.id.about_us_row_ll_phone3:
+                setPhoneCall(getResources().getString(R.string.phone_sharath));
+                break;
             case R.id.about_us_row_ll_phone4:
-                setPhoneCall(getResources().getString(R.string.phone_nithin));
+                setPhoneCall(getResources().getString(R.string.phone_soma));
+                break;
+            case R.id.about_us_row_ll_phone5:
+                setPhoneCall(getResources().getString(R.string.phone_subbi));
                 break;
         }
     }

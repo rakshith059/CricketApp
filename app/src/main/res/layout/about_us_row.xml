@@ -72,88 +72,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_10dp"
-                android:text="karthik"
+                android:text="MOHAN"
                 android:textColor="@color/black"
                 android:textSize="@dimen/size_12sp" />
 
             <LinearLayout
                 android:id="@+id/about_us_row_ll_phone1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/size_10dp"
-                    android:src="@android:drawable/ic_menu_call" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:maxLength="10"
-                    android:padding="@dimen/size_10dp"
-                    android:text="@string/phone_karthik"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/size_16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/size_10dp"
-                android:text="Nataraj"
-                android:textColor="@color/black"
-                android:textSize="@dimen/size_12sp" />
-
-            <LinearLayout
-                android:id="@+id/about_us_row_ll_phone2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/size_10dp"
-                    android:src="@android:drawable/ic_menu_call" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:maxLength="10"
-                    android:padding="@dimen/size_10dp"
-                    android:text="@string/phone_natraj"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/size_16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/size_10dp"
-                android:text="Mohan"
-                android:textColor="@color/black"
-                android:textSize="@dimen/size_12sp" />
-
-            <LinearLayout
-                android:id="@+id/about_us_row_ll_phone3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -186,7 +110,83 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_10dp"
-                android:text="Nithin"
+                android:text="SACHIN"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_12sp" />
+
+            <LinearLayout
+                android:id="@+id/about_us_row_ll_phone2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_10dp"
+                    android:src="@android:drawable/ic_menu_call" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:maxLength="10"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/phone_sachin"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/size_16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_10dp"
+                android:text="SHARATH"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_12sp" />
+
+            <LinearLayout
+                android:id="@+id/about_us_row_ll_phone3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_10dp"
+                    android:src="@android:drawable/ic_menu_call" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:maxLength="10"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/phone_sharath"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/size_16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_10dp"
+                android:text="SOMASHEKAR"
                 android:textColor="@color/black"
                 android:textSize="@dimen/size_12sp" />
 
@@ -208,7 +208,45 @@
                     android:layout_weight="1"
                     android:maxLength="10"
                     android:padding="@dimen/size_10dp"
-                    android:text="@string/phone_nithin"
+                    android:text="@string/phone_soma"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/size_16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_10dp"
+                android:text="SUBBERA"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_12sp" />
+
+            <LinearLayout
+                android:id="@+id/about_us_row_ll_phone5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/size_10dp"
+                    android:src="@android:drawable/ic_menu_call" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:maxLength="10"
+                    android:padding="@dimen/size_10dp"
+                    android:text="@string/phone_subbi"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/size_16sp"
                     android:textStyle="bold" />

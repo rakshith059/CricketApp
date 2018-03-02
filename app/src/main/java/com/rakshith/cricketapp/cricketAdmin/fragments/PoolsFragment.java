@@ -94,11 +94,11 @@ public class PoolsFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        StaggeredGridLayoutManager linearLayoutManagerPoolA = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager linearLayoutManagerPoolA = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         rvTeamsListPoolA.addItemDecoration(new RecyclerItemDecorator(5));
         rvTeamsListPoolA.setLayoutManager(linearLayoutManagerPoolA);
 
-        StaggeredGridLayoutManager linearLayoutManagerPoolB = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        StaggeredGridLayoutManager linearLayoutManagerPoolB = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         rvTeamsListPoolB.addItemDecoration(new RecyclerItemDecorator(5));
         rvTeamsListPoolB.setLayoutManager(linearLayoutManagerPoolB);
         getPoolListIfInternetAvailable();
