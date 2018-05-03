@@ -34,4 +34,5 @@
     <dimen name="size_300dp">300dp</dimen>
     <dimen name="size_280dp">280dp</dimen>
     <dimen name="size_250dp">250dp</dimen>
+    <dimen name="size_8dp">8dp</dimen>
 </resources>

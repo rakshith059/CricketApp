@@ -35,6 +35,9 @@
             android:icon="@android:drawable/btn_star_big_off"
             android:title="Rate this app" />
 
+        <item
+            android:id="@+id/nav_privacy_policy"
+            android:title="@string/privacy_policy" />
     </group>
 
     <group

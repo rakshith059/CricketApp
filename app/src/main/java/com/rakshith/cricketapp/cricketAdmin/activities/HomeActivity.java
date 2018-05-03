@@ -255,6 +255,9 @@ public class HomeActivity extends BaseActivity implements GoogleApiClient.OnConn
             Intent intent = new Intent(this, HomeActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(intent);
+        } else if (id == R.id.nav_privacy_policy) {
+            Intent intent = new Intent(this, WebViewActivity.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
